@@ -30,7 +30,7 @@
     <modules>
         <module>craftsman-client</module>
         <module>craftsman-adapter</module>
-        <module>craftsman-app</module>
+        <module>craftsman-biz</module>
         <module>craftsman-domain</module>
         <module>craftsman-infrastructure</module>
         <module>start</module>
@@ -73,7 +73,7 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba.craftsman</groupId>
-                <artifactId>craftsman-app</artifactId>
+                <artifactId>craftsman-biz</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

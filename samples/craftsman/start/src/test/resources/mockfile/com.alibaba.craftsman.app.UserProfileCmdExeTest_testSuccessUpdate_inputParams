@@ -4,7 +4,7 @@ com.alibaba.craftsman.gatewayimpl.database.UserProfileTunnel_create
 [
 	[
 		{
-			"@type":"com.alibaba.craftsman.gatewayimpl.database.dataobject.UserProfileDO",
+			"@type":"com.alibaba.craftsman.dao.demo.dataobject.UserProfileDO",
 			"appQualityScore":0.0D,
 			"checkinCodeQuantity":0.0D,
 			"creator":"testSuccessAdd",
@@ -54,7 +54,7 @@ com.alibaba.craftsman.gatewayimpl.database.UserProfileTunnel_update
 [
 	[
 		{
-			"@type":"com.alibaba.craftsman.gatewayimpl.database.dataobject.UserProfileDO",
+			"@type":"com.alibaba.craftsman.dao.demo.dataobject.UserProfileDO",
 			"appQualityScore":79.0D,
 			"checkinCodeQuantity":0.0D,
 			"dep":"ICBU",
@@ -72,7 +72,7 @@ com.alibaba.craftsman.gatewayimpl.database.UserProfileTunnel_update
 	],
 	[
 		{
-			"@type":"com.alibaba.craftsman.gatewayimpl.database.dataobject.UserProfileDO",
+			"@type":"com.alibaba.craftsman.dao.demo.dataobject.UserProfileDO",
 			"appQualityScore":0.0D,
 			"checkinCodeQuantity":0.0D,
 			"devQualityScore":0.0D,

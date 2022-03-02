@@ -4,10 +4,10 @@
 package ${package}.test;
 
 import com.alibaba.cola.dto.Response;
-import ${package}.api.CustomerServiceI;
-import ${package}.dto.CustomerAddCmd;
-import ${package}.dto.data.CustomerDTO;
-import ${package}.dto.data.ErrorCode;
+import ${package}.api.customer.CustomerServiceI;
+import ${package}.api.customer.dto.CustomerAddCmd;
+import ${package}.api.customer.dto.data.CustomerDTO;
+import ${package}.api.customer.dto.data.ErrorCode;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -13,11 +13,6 @@
     <name>craftsman-infrastructure</name>
 
     <dependencies>
-        <!--DIP here, Infrastructure depends on Domain-->
-        <dependency>
-            <groupId>com.alibaba.craftsman</groupId>
-            <artifactId>craftsman-domain</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -34,6 +29,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

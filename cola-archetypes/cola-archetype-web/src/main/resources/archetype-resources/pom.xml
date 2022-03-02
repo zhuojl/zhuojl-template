@@ -23,7 +23,7 @@
     <modules>
         <module>${rootArtifactId}-client</module>
         <module>${rootArtifactId}-adapter</module>
-        <module>${rootArtifactId}-app</module>
+        <module>${rootArtifactId}-biz</module>
         <module>${rootArtifactId}-domain</module>
         <module>${rootArtifactId}-infrastructure</module>
         <module>start</module>
@@ -67,7 +67,7 @@
             </dependency>
             <dependency>
                 <groupId>${groupId}</groupId>
-                <artifactId>${rootArtifactId}-app</artifactId>
+                <artifactId>${rootArtifactId}-biz</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -58,4 +58,11 @@ public class Response extends DTO {
         return response;
     }
 
+    public static <T> SingleResponse<T> of(T data) {
+        SingleResponse<T> response = new SingleResponse<>();
+        response.setSuccess(true);
+        response.setData(data);
+        return response;
+    }
+
 }

@@ -1,9 +1,9 @@
 package com.alibaba.craftsman.gatewayimpl;
 
-import com.alibaba.craftsman.domain.metrics.MainMetricType;
-import com.alibaba.craftsman.domain.metrics.SubMetricType;
-import com.alibaba.craftsman.gatewayimpl.database.MetricMapper;
-import com.alibaba.craftsman.gatewayimpl.database.dataobject.MetricDO;
+import com.alibaba.craftsman.domain.demo.entity.MainMetricType;
+import com.alibaba.craftsman.domain.demo.entity.SubMetricType;
+import com.alibaba.craftsman.dao.demo.MetricMapper;
+import com.alibaba.craftsman.dao.demo.dataobject.MetricDO;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -13,13 +13,19 @@
     <name>craftsman-domain</name>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba.craftsman</groupId>
+            <artifactId>craftsman-infrastructure</artifactId>
+        </dependency>
+
         <!-- COLA Framework -->
         <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-dto</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.cola</groupId>
+            <groupId>com.alibaba.cola</groupId>`
             <artifactId>cola-component-domain-starter</artifactId>
         </dependency>
         <dependency>

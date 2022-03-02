@@ -6,10 +6,10 @@ package ${package}.customer;
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.catchlog.CatchAndLog;
-import ${package}.api.CustomerServiceI;
-import ${package}.dto.CustomerAddCmd;
-import ${package}.dto.CustomerListByNameQry;
-import ${package}.dto.data.CustomerDTO;
+import ${package}.api.customer.CustomerServiceI;
+import ${package}.api.customer.dto.CustomerAddCmd;
+import ${package}.api.customer.dto.CustomerListByNameQry;
+import ${package}.api.customer.dto.data.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
