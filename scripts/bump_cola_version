@@ -11,7 +11,7 @@ source common_build.sh
 readonly bump_version="$1"
 
 (
-    headInfo "bump cola version of cola-components to $bump_version"
+    headInfo "bump cola version of components to $bump_version"
     cd ../cola-components/
 
     MVN_WITH_BASIC_OPTIONS \
