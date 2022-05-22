@@ -8,7 +8,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,10 +23,12 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 /**
  * 用于打印http请求和响应
  */
-@Order(Ordered.HIGHEST_PRECEDENCE)        //设置优先级，数值越低优先级越高
-@WebFilter(filterName = "reqRespLoggingFilter", urlPatterns = "/*")    //过滤路径
+@Order(Ordered.HIGHEST_PRECEDENCE + 90)        //设置优先级，数值越低优先级越高
+// WebFilter过滤路径设置无效，通过FilterRegistrationBean配置
 public class ReqRespLoggingFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReqRespLoggingFilter.class);
+
+
 
     public ReqRespLoggingFilter() {
     }

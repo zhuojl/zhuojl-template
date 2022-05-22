@@ -11,6 +11,10 @@ public class BizException extends BaseException {
 
     private static final String DEFAULT_ERR_CODE = "BIZ_ERROR";
 
+    public BizException(Error error) {
+        super(error.getErrorCode(), error.getErrorMsg());
+    }
+
     public BizException(String errMessage) {
         super(DEFAULT_ERR_CODE, errMessage);
     }

@@ -1,4 +1,4 @@
-package com.zjl.component.web.support.sign;
+package com.zjl.component.sign;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -13,12 +13,12 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import com.zjl.component.exception.SysException;
-
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
@@ -27,19 +27,18 @@ import org.springframework.util.StreamUtils;
 /**
  * 验签
  */
-@Order(Ordered.HIGHEST_PRECEDENCE + 10)        //设置优先级，数值越低优先级越高
-@WebFilter(filterName = "signValidateFilter", urlPatterns = "/internal/*")    //过滤路径
-public class SignValidateFilter implements Filter {
+@Order(Ordered.HIGHEST_PRECEDENCE + 100)        //设置优先级，数值越低优先级越高
+// WebFilter过滤路径设置无效，通过FilterRegistrationBean配置
+@Slf4j
+public class Md5SignValidateFilter implements Filter {
 
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
 
-    private final String PUBLIC_KEY
-        = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCkBsys2ZKFwdgN8cTFgbW8PAUTKNzD2CRPJ8Cvd2HS"
-        + "+LvI1qHhSAplzDe08YdgTip6jsnsf2lmDlUy4LFHGlOsnGo821d5RdfgzZE098Oy4PBMDh5a8/5bVsJg3p11Mmnrg"
-        + "/tnxgawWoBwyRN6FEbPyliA+QDDIDe3OyIJQSaEdQIDAQAB";
-
-    public SignValidateFilter() {
+    public Md5SignValidateFilter() {
     }
+
+    @Autowired
+    private Md5Signer md5Signer;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -47,7 +46,7 @@ public class SignValidateFilter implements Filter {
 
         try {
             HttpServletRequest httpServletRequest = (HttpServletRequest)request;
-            String sign = httpServletRequest.getHeader(SignRequestInterceptor.KEY_HEADER_SIGN);
+            String sign = httpServletRequest.getHeader(Md5SignRequestInterceptor.KEY_HEADER_SIGN);
             if (Strings.isEmpty(sign)) {
                 throw new SysException("sign not be empty");
             }
@@ -65,9 +64,8 @@ public class SignValidateFilter implements Filter {
                     StreamUtils.copyToString(httpServletRequest.getInputStream(), StandardCharsets.UTF_8));
             }
 
-            String signStr = requestSignEntity.signStr();
-            boolean success = RsaSignUtil.verify(signStr, RsaSignUtil.getPublicKey(PUBLIC_KEY), sign);
-            if (!success) {
+            String signResult = md5Signer.sign(requestSignEntity);
+            if (!sign.equals(signResult)) {
                 throw new SysException("asdfadf");
             }
 

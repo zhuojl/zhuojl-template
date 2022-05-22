@@ -1,4 +1,4 @@
-package com.zjl.component.web.support.sign;
+package com.zjl.component.sign;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -9,20 +9,21 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.zjl.component.exception.SysException;
-
+import feign.Request.HttpMethod;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpMethod;
+import org.apache.logging.log4j.util.Strings;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
-public class SignRequestInterceptor implements RequestInterceptor {
+public class Md5SignRequestInterceptor implements RequestInterceptor {
     private static final String DEFAULT_EMPTY_BODY = "Binary data";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
-    private final String PRIVATE_KEY
-        =
-        "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKQGzKzZkoXB2A3xxMWBtbw8BRMo3MPYJE8nwK93YdL4u8jWoeFICmXMN7Txh2BOKnqOyex/aWYOVTLgsUcaU6ycajzbV3lF1+DNkTT3w7Lg8EwOHlrz/ltWwmDenXUyaeuD+2fGBrBagHDJE3oURs/KWID5AMMgN7c7IglBJoR1AgMBAAECgYEAj2ImPx7+V5CI1j+2+9QUUpTA9uuseEKUEuG0LW6Vg//M35bH8Y+xDyXCuJi993C871+soeEK+Jyk25HRRk98PidYVXseDBlJYV3fotx5rmYPYR0NGPvbW1RFYMsQUUM3NfJuDRL1AhBjBCYiVM1VKHQO1LLfv8Gkuda0cyAGQKECQQDx2gXA3EifWCDCW6apgIETaEIJcoHaUe9y1VrB5KfskbgjKns7+OPYT0I1kotZu/Iws8VGaeE2CyF96QzwMC49AkEArZ9EJAYSgQBH/7q74VNBUaMD3z3YVhwDpi9XdwyRd7GdJXuAIbZfBJI+8H4Sq8BsI0B7XEW/jwETpe5dngaKmQJBAMmwpmelzTKFjhxHzn9A2WPT6G50ffIRrny3jM5x39Cb3VIGVWs4LtrvjimbIncdE+alpPkJx3UIZ0/XkKClrYkCQDNmdTvc+FlsheQ1mi2pAitzAVBz9Ln5bTMjzNcXx3ESCh3wpAxW+2ZVDYERMeHbA6ikDGFS3NUvUmvLV7fS4/ECQCSwU8WmxMxNdxLwrQk8RBs2e9iJvkH1YGOFUaOSm+hjtitv9aOn7ier2thVwkXwgBM6Xdrb1z13ak7EW+ZGtE4=";
     public static final String KEY_HEADER_SIGN = "_sign";
+
+    @Autowired
+    private Md5Signer md5Signer;
 
     @Override
     public void apply(RequestTemplate template) {
@@ -34,20 +35,36 @@ public class SignRequestInterceptor implements RequestInterceptor {
 
         // 因为tomcat对 application/x-www-form-urlencoded 参数做了特殊处理，不能使用通用验签方式，或者需要更通用的方式
         if (isFormPost(template)) {
+            fillQueryMap(queryMap, template.requestBody().asString());
             requestSignEntity.setBody("");
         } else {
-            // @see feign.Request.Body.asString
             String body = template.requestBody().asString();
+            // @see feign.Request.Body.asString
             requestSignEntity.setBody(DEFAULT_EMPTY_BODY.equals(body) ? "" : body);
         }
 
-        String signStr = requestSignEntity.signStr();
         try {
-            log.info("signStr:{} ", signStr);
-            String sign = RsaSignUtil.sign(signStr, RsaSignUtil.getPrivateKey(PRIVATE_KEY));
+            String sign = md5Signer.sign(requestSignEntity);
             template.header(KEY_HEADER_SIGN, sign);
         } catch (Exception e) {
             throw new SysException("sign error");
+        }
+    }
+
+    private void fillQueryMap(Map<String, String> queryMap, String body) {
+        if (Strings.isEmpty(body)) {
+            return;
+        }
+
+        String[] pairs = body.split("&");
+        for (String pair : pairs) {
+            int idx = pair.indexOf("=");
+            String key = pair.substring(0, idx);
+            String value = "";
+            if (idx + 1 < pair.length()) {
+                value = pair.substring(idx + 1);
+            }
+            queryMap.put(key, value);
         }
     }
 
@@ -84,6 +101,6 @@ public class SignRequestInterceptor implements RequestInterceptor {
 
         return Objects.nonNull(contentTypes)
             && contentTypes.contains(FORM_CONTENT_TYPE) &&
-            HttpMethod.POST.equals(template.request().httpMethod());
+            HttpMethod.POST.name().equals(template.request().httpMethod().name());
     }
 }

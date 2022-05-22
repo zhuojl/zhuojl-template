@@ -1,6 +1,7 @@
 package com.zjl.component.web.support;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -19,6 +20,14 @@ public class WebAutoConfiguration {
     @ConditionalOnMissingBean(ReqRespLoggingFilter.class)
     public ReqRespLoggingFilter reqRespLoggingFilter() {
         return new ReqRespLoggingFilter();
+    }
+
+    @Bean
+    public FilterRegistrationBean registerReqRespLoggingFilter(ReqRespLoggingFilter reqRespLoggingFilter) {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(reqRespLoggingFilter);
+        registration.addUrlPatterns("/*");
+        return registration;
     }
 
     @Bean

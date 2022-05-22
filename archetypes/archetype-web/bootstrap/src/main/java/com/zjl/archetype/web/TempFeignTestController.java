@@ -6,6 +6,7 @@ import java.util.Map;
 import com.zjl.archetype.web.infra.dao.CustomerDO;
 import com.zjl.archetype.web.infra.feign.FeignTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,10 +38,10 @@ public class TempFeignTestController {
         return customerDO;
     }
     @PostMapping(value = "/testFeign2", consumes = "application/x-www-form-urlencoded")
-    public CustomerDO testFeign2(CustomerDO customerDO) {
+    public CustomerDO testFeign2(@ModelAttribute CustomerDO customerDO) {
     // @RequestBody 不能与 application/x-www-form-urlencoded 混用，虽然http请求中参数在body。
     // public CustomerDO testFeign2(@RequestBody CustomerDO customerDO) {
-        String bodyStr = "customerId=11111&memberId=memberId";
+        String bodyStr = "customerId=11111&memberId=耍到耍到";
         feignTest.test2(bodyStr);
         customerDO.setCustomerId("asdfadsf");
         return customerDO;

@@ -2,7 +2,7 @@ package com.zjl.archetype.web.infra.feign;
 
 import java.util.Map;
 
-import com.zjl.component.web.support.sign.FeignSignConfiguration;
+import com.zjl.component.sign.FeignSignConfiguration;
 
 import com.zjl.archetype.web.infra.dao.CustomerDO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -20,7 +20,7 @@ public interface FeignTest {
     @PostMapping(value = "internal/testFeign", consumes = "application/json")
     CustomerDO test(@RequestBody Map param);
 
-    @PostMapping(value = "internal/testFeign2?aa=bbbc", consumes = "application/x-www-form-urlencoded")
+    @PostMapping(value = "internal/testFeign2?aa=测试", consumes = "application/x-www-form-urlencoded")
     CustomerDO test2(String param);
 
     /**
