@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
@@ -23,7 +24,8 @@ public class RestResultWrapper implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         // 不是response返回的场景
-        return !returnType.getMethod().getReturnType().isAssignableFrom(Response.class);
+        return !(returnType.getMethod().getReturnType().isAssignableFrom(Response.class)
+         || returnType.getMethod().getReturnType().isAssignableFrom(ResponseEntity.class));
     }
 
     @Override

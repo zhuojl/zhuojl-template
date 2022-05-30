@@ -1,7 +1,11 @@
 package com.zjl.component.web.support;
 
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -14,12 +18,19 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @Configuration
 @EnableAspectJAutoProxy
+@AutoConfigureBefore(ErrorMvcAutoConfiguration.class)
 public class WebAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(ReqRespLoggingFilter.class)
     public ReqRespLoggingFilter reqRespLoggingFilter() {
         return new ReqRespLoggingFilter();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(HttpErrorHandler.class)
+    public HttpErrorHandler httpErrorHandler(ErrorAttributes errorAttributes, ServerProperties serverProperties) {
+        return new HttpErrorHandler(errorAttributes, serverProperties);
     }
 
     @Bean

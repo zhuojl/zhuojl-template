@@ -5,7 +5,7 @@ package com.zjl.component.exception;
  */
 public interface Error {
 
-    String getErrorCode();
-    String getErrorMsg();
+    String errorCode();
+    String errorMsg();
 
 }

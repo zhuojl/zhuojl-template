@@ -9,7 +9,7 @@ public class SysException extends BaseException {
 
     private static final long serialVersionUID = 1L;
 
-    private static final String DEFAULT_ERR_CODE = "SYS_ERROR";
+    private static final String DEFAULT_ERR_CODE = CommonErrorEnum.INNER_ERROR.errorCode();
 
     public SysException(String errMessage) {
         super(DEFAULT_ERR_CODE, errMessage);

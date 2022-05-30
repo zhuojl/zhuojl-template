@@ -12,6 +12,8 @@ import com.zjl.archetype.web.biz.customer.dto.CustomerListByNameQry;
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
 import com.zjl.archetype.web.biz.customer.service.CustomerBizService;
 import com.zjl.archetype.web.client.customer.CustomerClient;
+import com.zjl.component.exception.CommonErrorEnum;
+import com.zjl.component.exception.ExceptionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,14 +29,13 @@ public class CustomerController implements CustomerClient {
     private CustomerBizService customerBizService;
 
     @GetMapping(value = "/helloworld")
-    public String helloWorld() {
-        throw new BizException("sys");
-        //return "Hello, welcome to COLA world!";
+    public String helloWorld() throws Exception {
+        throw new Exception("test");
     }
 
     @PostMapping(value = "/helloworld")
     public String helloWorld2() {
-        throw new BizException("sys");
+        throw ExceptionFactory.badRequestException(CommonErrorEnum.INNER_ERROR);
         //return "Hello, welcome to COLA world!";
     }
 

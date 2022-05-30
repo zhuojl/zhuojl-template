@@ -1,6 +1,7 @@
 package com.zjl.component.dto;
 
 import com.zjl.component.exception.BaseException;
+import com.zjl.component.exception.Error;
 
 /**
  * Response to caller
@@ -13,12 +14,9 @@ public class Response<T> extends DTO {
 
     private boolean success;
 
-    private String errCode;
-
-    private String errMessage;
+    private ErrorInfo error;
 
     private T data;
-
 
     public static <T> Response of(T t) {
         Response response = new Response();
@@ -27,19 +25,39 @@ public class Response<T> extends DTO {
         return response;
     }
 
+    public static Response buildFailure(Error error) {
+        Response response = new Response();
+        response.setSuccess(false);
+        ErrorInfo errorInfo = new ErrorInfo();
+        errorInfo.setErrCode(error.errorCode());
+        errorInfo.setErrMessage(error.errorMsg());
+        response.setError(errorInfo);
+        return response;
+    }
+
     public static Response buildFailure(String errCode, String errMessage) {
         Response response = new Response();
         response.setSuccess(false);
-        response.setErrCode(errCode);
-        response.setErrMessage(errMessage);
+        ErrorInfo errorInfo = new ErrorInfo();
+        errorInfo.setErrCode(errCode);
+        errorInfo.setErrMessage(errMessage);
+        response.setError(errorInfo);
+        return response;
+    }
+    public static Response buildFailure(ErrorInfo errorInfo) {
+        Response response = new Response();
+        response.setSuccess(false);
+        response.setError(errorInfo);
         return response;
     }
 
     public static Response buildFailure(BaseException baseException) {
         Response response = new Response();
         response.setSuccess(false);
-        response.setErrCode(baseException.getErrCode());
-        response.setErrMessage(baseException.getErrCode());
+        ErrorInfo errorInfo = new ErrorInfo();
+        errorInfo.setErrCode(baseException.getErrCode());
+        errorInfo.setErrMessage(baseException.getMessage());
+        response.setError(errorInfo);
         return response;
     }
 
@@ -57,22 +75,6 @@ public class Response<T> extends DTO {
         this.success = success;
     }
 
-    public String getErrCode() {
-        return errCode;
-    }
-
-    public void setErrCode(String errCode) {
-        this.errCode = errCode;
-    }
-
-    public String getErrMessage() {
-        return errMessage;
-    }
-
-    public void setErrMessage(String errMessage) {
-        this.errMessage = errMessage;
-    }
-
     public T getData() {
         return data;
     }
@@ -81,4 +83,11 @@ public class Response<T> extends DTO {
         this.data = data;
     }
 
+    public ErrorInfo getError() {
+        return error;
+    }
+
+    public void setError(ErrorInfo error) {
+        this.error = error;
+    }
 }

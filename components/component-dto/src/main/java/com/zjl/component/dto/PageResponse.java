@@ -86,8 +86,10 @@ public class PageResponse<T> extends Response<Collection<T>> {
     public static PageResponse buildFailure(String errCode, String errMessage) {
         PageResponse response = new PageResponse();
         response.setSuccess(false);
-        response.setErrCode(errCode);
-        response.setErrMessage(errMessage);
+        ErrorInfo errorInfo = new ErrorInfo();
+        errorInfo.setErrCode(errCode);
+        errorInfo.setErrMessage(errMessage);
+        response.setError(errorInfo);
         return response;
     }
 

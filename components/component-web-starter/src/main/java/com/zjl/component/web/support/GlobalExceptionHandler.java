@@ -8,9 +8,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import com.zjl.component.dto.Response;
+import com.zjl.component.exception.BadRequestException;
 import com.zjl.component.exception.BaseException;
 import com.zjl.component.exception.BizException;
 
+import com.zjl.component.exception.CommonErrorEnum;
+import com.zjl.component.exception.NotFoundException;
+import com.zjl.component.exception.PermissionDeniedException;
+import com.zjl.component.exception.SysException;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,23 +50,42 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     public final ResponseEntity<Object> handleExceptionGlobal(Throwable e, WebRequest request) throws Exception {
-        LOGGER.error("SYS EXCEPTION, errorMsg:{}", e.getMessage(), e);
-        return new ResponseEntity<>(Response.buildFailure("UNKNOWN_ERROR", "UNKNOWN_ERROR"),
+        LOGGER.error("handleExceptionGlobal EXCEPTION, errorMsg:{}", e.getMessage(), e);
+        return new ResponseEntity<>(Response.buildFailure(CommonErrorEnum.INNER_ERROR),
             HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(BaseException.class)
-    public final ResponseEntity<Object> handleBaseException(BaseException e, WebRequest request) throws Exception {
-        if (e instanceof BizException) {
-            //在Debug的时候，对于BizException也打印堆栈
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
-            } else {
-                LOGGER.warn("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
-            }
-            return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(BizException.class)
+    public final ResponseEntity<Object> handleBizException(BizException e, WebRequest request) throws Exception {
+        //在Debug的时候，对于BizException也打印堆栈
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
         }
+        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.BAD_REQUEST);
 
+    }
+    @ExceptionHandler(BadRequestException.class)
+    public final ResponseEntity<Object> handleBadRequestException(BadRequestException e, WebRequest request) throws Exception {
+        //在Debug的时候，对于BizException也打印堆栈
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
+        }
+        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.BAD_REQUEST);
+
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public final ResponseEntity<Object> handleNotFoundException(NotFoundException e, WebRequest request) throws Exception {
+        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PermissionDeniedException.class)
+    public final ResponseEntity<Object> handlePermissionDeniedException(PermissionDeniedException e, WebRequest request) throws Exception {
+        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(SysException.class)
+    public final ResponseEntity<Object> handleSysException(SysException e, WebRequest request) throws Exception {
         LOGGER.error("SYS EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
         return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -73,7 +97,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);
             LOGGER.error("handleExceptionInternal error", ex);
         }
-        return new ResponseEntity<>(Response.buildFailure("SYS", ex.getMessage()), headers, status);
+        return new ResponseEntity<>(Response.buildFailure(CommonErrorEnum.INNER_ERROR), headers, status);
     }
 
     @Override
@@ -103,7 +127,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             }
         }
 
-        Response response = Response.buildFailure("sys.parameter", String.join(",", details));
+        Response response = Response.buildFailure(CommonErrorEnum.INVALID_PARAMETER.errorCode(), String.join(",", details));
         return new ResponseEntity<>(response, headers, HttpStatus.BAD_REQUEST);
     }
 }
