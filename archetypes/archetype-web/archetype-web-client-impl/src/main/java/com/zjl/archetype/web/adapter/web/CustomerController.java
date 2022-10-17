@@ -4,14 +4,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.zjl.component.dto.Response;
-import com.zjl.component.exception.BizException;
-
 import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
 import com.zjl.archetype.web.biz.customer.dto.CustomerListByNameQry;
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
 import com.zjl.archetype.web.biz.customer.service.CustomerBizService;
 import com.zjl.archetype.web.client.customer.CustomerClient;
+import com.zjl.component.dto.Response;
 import com.zjl.component.exception.CommonErrorEnum;
 import com.zjl.component.exception.ExceptionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
