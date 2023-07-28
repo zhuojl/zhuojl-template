@@ -13,7 +13,6 @@
     <modules>
         <module>component-dto</module>
         <module>component-exception</module>
-        <module>component-extension-starter</module>
         <module>component-web-starter</module>
         <module>component-common-secure</module>
         <module>component-feign</module>

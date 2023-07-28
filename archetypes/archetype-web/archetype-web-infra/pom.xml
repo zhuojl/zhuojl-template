@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.zjl.component</groupId>
-            <artifactId>component-sign-util</artifactId>
+            <artifactId>component-feign</artifactId>
             <version>${project.version}</version>
         </dependency>
 
