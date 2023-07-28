@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.zjl.component</groupId>
             <artifactId>component-feign</artifactId>
-            <version>${project.version}</version>
+            <version>${cola.components.version}</version>
         </dependency>
 
         <dependency>
