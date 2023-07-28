@@ -1,4 +1,4 @@
-package com.zjl.component.feign;
+package com.zjl.component.feign.sign;
 
 import com.zjl.component.exception.SysException;
 import com.zjl.component.secure.sign.Md5Signer;

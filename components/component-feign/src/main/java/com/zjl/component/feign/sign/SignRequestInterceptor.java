@@ -1,4 +1,4 @@
-package com.zjl.component.feign;
+package com.zjl.component.feign.sign;
 
 import feign.RequestInterceptor;
 
