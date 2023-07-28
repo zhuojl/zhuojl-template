@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.zjl.component</groupId>
-            <artifactId>component-sign-util</artifactId>
+            <artifactId>component-common-secure</artifactId>
             <version>${project.version}</version>
         </dependency>
 

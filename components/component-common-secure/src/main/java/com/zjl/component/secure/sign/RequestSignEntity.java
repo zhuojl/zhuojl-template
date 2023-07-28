@@ -1,11 +1,11 @@
-package com.zjl.component.sign;
+package com.zjl.component.secure.sign;
+
+import lombok.Data;
 
 import java.util.Map;
 import java.util.Objects;
 import java.util.SortedMap;
 import java.util.TreeMap;
-
-import lombok.Data;
 
 @Data
 public class RequestSignEntity {

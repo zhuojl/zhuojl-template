@@ -2,8 +2,9 @@ package com.zjl.component.web.support;
 
 import javax.servlet.Filter;
 
-import com.zjl.component.sign.Md5SignValidateFilter;
-import com.zjl.component.sign.Md5Signer;
+import com.zjl.component.secure.sign.Md5Signer;
+import com.zjl.component.web.support.sign.Md5SignValidateFilter;
+import com.zjl.component.web.support.sign.SignValidateFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -17,20 +18,15 @@ public class SignAutoConfiguration {
     private String urlPatterns;
 
     @Bean
-    public Md5Signer md5Signer() {
-        return new Md5Signer();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(Md5SignValidateFilter.class)
-    public Md5SignValidateFilter signValidateFilter() {
+    @ConditionalOnMissingBean(SignValidateFilter.class)
+    public SignValidateFilter signValidateFilter() {
         return new Md5SignValidateFilter();
     }
 
     @Bean
-    public FilterRegistrationBean registrationProjectFilter(Md5SignValidateFilter md5DeSignValidateFilter) {
+    public FilterRegistrationBean registrationProjectFilter(SignValidateFilter signValidateFilter) {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(md5DeSignValidateFilter);
+        registration.setFilter(signValidateFilter);
         registration.addUrlPatterns(urlPatterns);
         return registration;
     }

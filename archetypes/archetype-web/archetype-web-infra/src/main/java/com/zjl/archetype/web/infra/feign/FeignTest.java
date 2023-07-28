@@ -2,7 +2,7 @@ package com.zjl.archetype.web.infra.feign;
 
 import java.util.Map;
 
-import com.zjl.component.sign.FeignSignConfiguration;
+import com.zjl.component.feign.FeignConfiguration;
 
 import com.zjl.archetype.web.infra.dao.CustomerDO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * 更多open feign 使用示例可以看spring cloud open feign 源码中单元测试
  * org.springframework.cloud.openfeign.support.SpringMvcContractTests
  */
-@FeignClient(name = "feignTest", url = "http://localhost:8080/", configuration = FeignSignConfiguration.class)
+@FeignClient(name = "feignTest", url = "http://localhost:8080/", configuration = FeignConfiguration.class)
 public interface FeignTest {
 
     @PostMapping(value = "internal/testFeign", consumes = "application/json")

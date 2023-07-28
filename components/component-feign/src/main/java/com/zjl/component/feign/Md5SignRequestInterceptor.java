@@ -1,4 +1,12 @@
-package com.zjl.component.sign;
+package com.zjl.component.feign;
+
+import com.zjl.component.exception.SysException;
+import com.zjl.component.secure.sign.Md5Signer;
+import com.zjl.component.secure.sign.RequestSignEntity;
+import feign.Request.HttpMethod;
+import feign.RequestTemplate;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -8,22 +16,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import com.zjl.component.exception.SysException;
-import feign.Request.HttpMethod;
-import feign.RequestInterceptor;
-import feign.RequestTemplate;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Slf4j
-public class Md5SignRequestInterceptor implements RequestInterceptor {
+public class Md5SignRequestInterceptor implements SignRequestInterceptor {
     private static final String DEFAULT_EMPTY_BODY = "Binary data";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
-    public static final String KEY_HEADER_SIGN = "_sign";
-
-    @Autowired
-    private Md5Signer md5Signer;
+    private Md5Signer md5Signer = new Md5Signer("test");
 
     @Override
     public void apply(RequestTemplate template) {
@@ -45,7 +42,7 @@ public class Md5SignRequestInterceptor implements RequestInterceptor {
 
         try {
             String sign = md5Signer.sign(requestSignEntity);
-            template.header(KEY_HEADER_SIGN, sign);
+            template.header(Md5Signer.KEY_HEADER_SIGN, sign);
         } catch (Exception e) {
             throw new SysException("sign error");
         }

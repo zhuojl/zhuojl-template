@@ -16,7 +16,7 @@
         <module>component-extension-starter</module>
         <module>component-web-starter</module>
         <module>component-common-secure</module>
-        <module>component-sign-util</module>
+        <module>component-feign</module>
     </modules>
 
     <properties>

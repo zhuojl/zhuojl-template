@@ -1,4 +1,4 @@
-package com.zjl.component.web.support;
+package com.zjl.component.web.support.log;
 
 import com.zjl.component.dto.Response;
 import com.alibaba.fastjson.JSONObject;

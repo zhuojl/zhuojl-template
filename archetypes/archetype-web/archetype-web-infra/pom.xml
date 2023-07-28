@@ -14,10 +14,10 @@
     <name>archetype-web-infrastructure</name>
 
     <dependencies>
-
         <dependency>
             <groupId>com.zjl.component</groupId>
-            <artifactId>component-web-starter</artifactId>
+            <artifactId>component-sign-util</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

@@ -28,6 +28,13 @@
             <version>${spring.boot.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- 工具包 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>
