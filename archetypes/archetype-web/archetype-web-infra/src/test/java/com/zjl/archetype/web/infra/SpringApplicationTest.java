@@ -1,30 +1,23 @@
 package com.zjl.archetype.web.infra;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@SpringBootTest(classes = BaseApplicationTest.DemoApplication.class, properties = {
+@SpringBootTest(classes = SpringApplicationTest.DemoApplication.class, properties = {
     "spring.config.location:classpath:/application-test.properties"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
-@Slf4j
 @Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-public class BaseApplicationTest {
+public interface SpringApplicationTest {
 
-    public static final String DEFAULT_USER_NAME = "zjl";
-    public static final String DEFAULT_USER_ID = "zjlId";
+    String DEFAULT_USER_NAME = "zjl";
+    String DEFAULT_USER_ID = "zjlId";
 
     @SpringBootApplication
     static class DemoApplication {
-
-    }
-    @Test
-    public void baseTest() {
 
     }
 

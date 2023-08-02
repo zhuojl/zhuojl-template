@@ -1,6 +1,6 @@
 package com.zjl.archetype.web.infra.Kafka;
 
-import com.zjl.archetype.web.infra.BaseApplicationTest;
+import com.zjl.archetype.web.infra.SpringApplicationTest;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -28,6 +28,11 @@ import java.util.concurrent.TimeUnit;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+/**
+ * kafka 单元测试
+ * @see {https://blog.mimacom.com/embeddedkafka-kafka-auto-configure-springboottest-bootstrapserversproperty/}
+ */
 @EmbeddedKafka(
     bootstrapServersProperty = "spring.kafka.bootstrap-servers",
     topics = EmbeddedKafkaTest.TOPIC_NAME
@@ -35,7 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource(properties = "spring.kafka.consumer.auto-offset-reset = earliest")
 @TestInstance(Lifecycle.PER_CLASS)
 @Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-class EmbeddedKafkaTest extends BaseApplicationTest {
+class EmbeddedKafkaTest implements SpringApplicationTest {
 
     @Configuration
     @EnableAutoConfiguration

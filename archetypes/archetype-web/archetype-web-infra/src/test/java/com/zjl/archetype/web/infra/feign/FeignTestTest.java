@@ -1,17 +1,12 @@
 package com.zjl.archetype.web.infra.feign;
 
-import com.zjl.archetype.web.infra.BaseApplicationTest;
+import com.zjl.archetype.web.infra.SpringApplicationTest;
 import com.zjl.archetype.web.infra.dao.CustomerDO;
 import org.junit.Ignore;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 测试：
@@ -20,15 +15,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-public class FeignTestTest extends BaseApplicationTest {
+public class FeignTestTest implements SpringApplicationTest {
 
     @Autowired
     private FeignTest feignTest;
-
-    @BeforeEach
-    void setUp() {
-
-    }
 
     @Test
     void test() {
