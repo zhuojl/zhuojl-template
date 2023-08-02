@@ -7,10 +7,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-public class CustomerMapperTest implements SpringApplicationTest {
+public class CustomerDaoTest implements SpringApplicationTest {
 
     @Resource
-    private CustomerMapper customerMapper;
+    private CustomerDao customerDao;
 
     @Test
     public void testFindByID() {
@@ -19,7 +19,7 @@ public class CustomerMapperTest implements SpringApplicationTest {
 
     @Test
     public void testGetLatest() {
-        CustomerDO zjlUser = customerMapper.getByCustomerId(DEFAULT_USER_ID);
+        CustomerDO zjlUser = customerDao.getByCustomerId(DEFAULT_USER_ID);
         System.out.println(zjlUser);
     }
 }

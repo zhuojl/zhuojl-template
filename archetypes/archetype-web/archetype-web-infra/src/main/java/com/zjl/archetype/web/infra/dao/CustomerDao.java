@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface CustomerMapper extends BaseMapper<CustomerDO> {
+public interface CustomerDao extends BaseMapper<CustomerDO> {
 
     @Select("select * from customer where customerId = #{customerId}")
     CustomerDO getByCustomerId(String customerId);

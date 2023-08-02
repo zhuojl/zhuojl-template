@@ -2,7 +2,7 @@ package com.zjl.archetype.web.domain.customer.service;
 
 import com.zjl.archetype.web.domain.customer.Customer;
 import com.zjl.archetype.web.infra.dao.CustomerDO;
-import com.zjl.archetype.web.infra.dao.CustomerMapper;
+import com.zjl.archetype.web.infra.dao.CustomerDao;
 import com.zjl.archetype.web.infra.event.EventPublisher;
 import com.zjl.archetype.web.infra.util.JsonUtil;
 import org.junit.Assert;
@@ -22,14 +22,14 @@ public class CustomerServiceTest {
     @InjectMocks
     private CustomerServiceImpl customerService;
     @Spy
-    private CustomerMapper customerMapper;
+    private CustomerDao customerDao;
     @Mock
     private EventPublisher eventPublisher;
 
     @Test
     public void testGetByById() throws IOException {
         CustomerDO customerDO = JsonUtil.parseJsonFromClassPathFile("test/domain/customer/CustomerDO.json", CustomerDO.class);
-        Mockito.when(customerMapper.getByCustomerId("test")).thenReturn(customerDO);
+        Mockito.when(customerDao.getByCustomerId("test")).thenReturn(customerDO);
         Customer customer = customerService.getByById("test");
         Assert.assertNotNull(customer);
         Assert.assertEquals(customerDO.getCustomerId(), customer.getCustomerId());
