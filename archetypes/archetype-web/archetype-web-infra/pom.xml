@@ -11,7 +11,7 @@
 
     <artifactId>archetype-web-infra</artifactId>
     <packaging>jar</packaging>
-    <name>archetype-web-infrastructure</name>
+    <name>archetype-web-infra</name>
 
     <dependencies>
         <dependency>
