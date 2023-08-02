@@ -10,7 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-class UserClientTestByMock implements BaseMockTest {
+class UserClientByMockTest implements BaseMockTest {
     @InjectMocks
     private UserClient userClient;
     @Mock
@@ -22,4 +22,5 @@ class UserClientTestByMock implements BaseMockTest {
         UserDto userDto = userClient.dummy();
         Assert.assertEquals("userId", userDto.getUserId());
     }
+
 }

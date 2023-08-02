@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 //@ExtendWith(MockitoExtension.class)
@@ -17,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class CustomerServiceTest {
     @InjectMocks
     private CustomerServiceImpl customerService;
-    @Mock
+    @Spy
     private CustomerMapper customerMapper;
     @Mock
     private EventPublisher eventPublisher;
