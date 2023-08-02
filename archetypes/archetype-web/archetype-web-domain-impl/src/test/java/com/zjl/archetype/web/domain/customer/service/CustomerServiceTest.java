@@ -10,9 +10,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
-@RunWith(PowerMockRunner.class)
+//@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class) // 和 infra 不一致？ infra使用 ExtendWith 方式，
 public class CustomerServiceTest {
     @InjectMocks
     private CustomerServiceImpl customerService;

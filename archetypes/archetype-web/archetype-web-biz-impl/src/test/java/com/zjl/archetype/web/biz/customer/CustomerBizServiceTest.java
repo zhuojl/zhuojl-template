@@ -2,17 +2,16 @@ package com.zjl.archetype.web.biz.customer;
 
 import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
-import com.zjl.archetype.web.biz.customer.service.CustomerBizService;
 import com.zjl.archetype.web.biz.customer.service.CustomerBizServiceImpl;
 import com.zjl.archetype.web.domain.customer.service.CustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
-@RunWith(PowerMockRunner.class)
-public class CustomerBizServiceTest  {
+@RunWith(MockitoJUnitRunner.class)
+public class CustomerBizServiceTest {
 
     @InjectMocks
     private CustomerBizServiceImpl customerBizService;
