@@ -43,6 +43,9 @@ archetype:create-from-project 本质是通过替换 模板代码 中各项变量
 | groupId  | 引用包路径（当package不能匹配时），替换字符 |
 | artifactId  | 多模块前缀定位（只有当模块前缀为artifactId，才会替换），代码字符替换|
 
+### 常见问题
+1. 修改包结构后重新生成archetype时，注意mvn clean，不然打jar包会全打进去，generate时，会异常
+
 ### 参考
 - [官网](https://maven.apache.org/archetype/maven-archetype-plugin/)
 - [create-from-project](https://maven.apache.org/archetype/maven-archetype-plugin/create-from-project-mojo.html#defaultEncoding)

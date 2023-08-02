@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "feignTest", url = "http://localhost:8080/", configuration = FeignConfiguration.class)
 public interface FeignTest {
 
-    @PostMapping(value = "internal/testFeign", consumes = "application/json")
+    @PostMapping(value = "internal/testFeign?aa=bbcc", consumes = "application/json")
     CustomerDO test(@RequestBody Map param);
 
     @PostMapping(value = "internal/testFeign2?aa=测试", consumes = "application/x-www-form-urlencoded")
