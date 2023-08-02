@@ -97,6 +97,16 @@
             <!--COLA components End-->
 
             <!--Project modules End-->
+
+
+            <!-- spring cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>2.1.1.RELEASE</version>
+            </dependency>
+            <!-- spring cloud end -->
+
             <!--Spring Boot-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
