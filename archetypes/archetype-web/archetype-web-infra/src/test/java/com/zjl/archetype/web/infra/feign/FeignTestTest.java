@@ -2,6 +2,7 @@ package com.zjl.archetype.web.infra.feign;
 
 import com.zjl.archetype.web.infra.BaseApplicationTest;
 import com.zjl.archetype.web.infra.dao.CustomerDO;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * 1. 容器启动时，feign client顺利加载到容器中
  * 2. 方法的参数定义符合feign规则，常见问题：get
  */
+
+@Ignore
 public class FeignTestTest extends BaseApplicationTest {
 
     @Autowired

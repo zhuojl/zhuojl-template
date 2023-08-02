@@ -19,7 +19,7 @@ import java.util.Map;
 public class FeignTestConfig {
     @Bean
     public Client client() {
-        return new TestClient();
+        return new FeignStubClient();
     }
 
     /**
@@ -27,7 +27,7 @@ public class FeignTestConfig {
      * 用于测试常见问题：
      * 1. feign client name 一致，导致容器不能启动
      */
-    public static class TestClient implements Client {
+    public static class FeignStubClient implements Client {
         @Override
         public Response execute(Request request, Request.Options options) throws IOException {
             Map<String, Collection<String>> responseHeaderMap = Maps.newHashMap();
