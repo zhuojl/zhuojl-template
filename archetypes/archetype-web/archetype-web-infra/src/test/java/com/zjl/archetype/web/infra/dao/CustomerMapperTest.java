@@ -3,8 +3,10 @@ package com.zjl.archetype.web.infra.dao;
 import javax.annotation.Resource;
 
 import com.zjl.archetype.web.infra.BaseApplicationTest;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
 public class CustomerMapperTest extends BaseApplicationTest {
 
     @Resource

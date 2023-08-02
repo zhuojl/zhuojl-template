@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 2. 方法的参数定义符合feign规则，常见问题：get
  */
 
-@Ignore
+@Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
 public class FeignTestTest extends BaseApplicationTest {
 
     @Autowired
