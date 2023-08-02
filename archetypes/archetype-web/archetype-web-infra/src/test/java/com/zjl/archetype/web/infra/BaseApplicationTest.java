@@ -22,7 +22,7 @@ public class BaseApplicationTest {
 
     }
     @Test
-    public void test() {
+    public void baseTest() {
 
     }
 
