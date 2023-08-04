@@ -31,7 +31,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * kafka 单元测试
- * @see {https://blog.mimacom.com/embeddedkafka-kafka-auto-configure-springboottest-bootstrapserversproperty/}
+ *
+ * @link {https://blog.mimacom.com/embeddedkafka-kafka-auto-configure-springboottest-bootstrapserversproperty/}
  */
 @EmbeddedKafka(
     bootstrapServersProperty = "spring.kafka.bootstrap-servers",
@@ -40,7 +41,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource(properties = "spring.kafka.consumer.auto-offset-reset = earliest")
 @TestInstance(Lifecycle.PER_CLASS)
 @Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-class EmbeddedKafkaTest implements SpringApplicationTest {
+public class EmbeddedKafkaTest implements SpringApplicationTest {
 
     @Configuration
     @EnableAutoConfiguration
@@ -66,7 +67,7 @@ class EmbeddedKafkaTest implements SpringApplicationTest {
     }
 
     @Test
-    void testProducerAndConsumer() throws Exception {
+    public void testProducerAndConsumer() throws Exception {
         final String KEY = "key1", VALUE = "value1";
         try (
             Consumer<String, String> consumer = consumerFactory.createConsumer("consumer", null);
@@ -91,7 +92,7 @@ class EmbeddedKafkaTest implements SpringApplicationTest {
     }
 
     @Test
-    void testTemplateAndListener() throws Exception {
+    public void testTemplateAndListener() throws Exception {
         final String KEY = "key2", VALUE = "value2";
         consumptionQueue.clear();
 

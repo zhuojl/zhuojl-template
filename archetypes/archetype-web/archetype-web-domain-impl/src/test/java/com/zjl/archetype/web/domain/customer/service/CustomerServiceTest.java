@@ -6,18 +6,18 @@ import com.zjl.archetype.web.infra.dao.CustomerDao;
 import com.zjl.archetype.web.infra.event.EventPublisher;
 import com.zjl.archetype.web.infra.util.JsonUtil;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
 
-//@ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class) // 和 infra 不一致？ infra使用 ExtendWith 方式，
+//@RunWith(MockitoJUnitRunner.class) // junit 4
+@ExtendWith(MockitoExtension.class)
 public class CustomerServiceTest {
     @InjectMocks
     private CustomerServiceImpl customerService;

@@ -9,7 +9,7 @@ import java.io.IOException;
 public class JsonUtilTest {
 
     @Test
-    void testParseJsonFromClassPathFile() throws IOException {
+    public void testParseJsonFromClassPathFile() throws IOException {
         CustomerDO customerDO = JsonUtil.parseJsonFromClassPathFile("test/util/test.json", CustomerDO.class);
         Assert.assertEquals("zjlId", customerDO.getCustomerId());
     }

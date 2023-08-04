@@ -23,15 +23,16 @@ public class H2DatasourceConfig {
 
     @Bean
     public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
+        // 数据库初始化
         final DataSourceInitializer initializer = new DataSourceInitializer();
         initializer.setDataSource(dataSource);
-
         initializer.setDatabasePopulator(databasePopulator());
         return initializer;
     }
 
     private DatabasePopulator databasePopulator() {
         final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+        // 初始化脚本：schemaScript schema脚本，dataScript 数据脚本
         populator.addScripts(schemaScript, dataScript);
         return populator;
     }

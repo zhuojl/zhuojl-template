@@ -12,7 +12,7 @@ import com.zjl.component.secure.secure.RSAPublicSecure;
 import com.zjl.component.secure.secure.SHASecure;
 import com.zjl.component.secure.secure.SecureFactory;
 import com.zjl.component.secure.util.CoderUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author chenerzhu
