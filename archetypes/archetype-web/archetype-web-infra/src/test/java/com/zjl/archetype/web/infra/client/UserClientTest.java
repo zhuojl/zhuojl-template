@@ -4,24 +4,20 @@ import com.zjl.archetype.web.infra.client.dto.UserDto;
 import com.zjl.archetype.web.infra.dao.CustomerDO;
 import com.zjl.archetype.web.infra.feign.FeignTest;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * 会加载容器所有bean，需要mockBean的太多，为减少依赖，不推荐这种方式。
  */
-@RunWith(SpringRunner.class)
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
-@Ignore
+@SpringBootTest(classes = UserClientTest.UserClientTestApplication.class)
 public class UserClientTest {
 
     @Autowired
@@ -38,6 +34,11 @@ public class UserClientTest {
 
     @Test
     void emptyTest() {
+    }
+
+    @SpringBootApplication(scanBasePackages = "com.zjl.archetype.web.infra.client")
+    static class UserClientTestApplication {
+
     }
 
 }

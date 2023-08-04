@@ -1,11 +1,10 @@
 package com.zjl.archetype.web.infra.dao;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
 
-public class CustomerDaoTest implements FeignApplicationTest {
+public class CustomerDaoTest implements MysqlApplicationTest{
 
     @Resource
     private CustomerDao customerDao;
