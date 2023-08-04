@@ -1,13 +1,11 @@
 package com.zjl.archetype.web.infra.dao;
 
-import javax.annotation.Resource;
-
-import com.zjl.archetype.web.infra.SpringApplicationTest;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
-@Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-public class CustomerDaoTest implements SpringApplicationTest {
+import javax.annotation.Resource;
+
+public class CustomerDaoTest implements FeignApplicationTest {
 
     @Resource
     private CustomerDao customerDao;

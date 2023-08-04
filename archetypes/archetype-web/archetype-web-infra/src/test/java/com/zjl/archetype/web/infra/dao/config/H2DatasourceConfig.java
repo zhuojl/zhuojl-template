@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.infra.config;
+package com.zjl.archetype.web.infra.dao.config;
 
 import javax.sql.DataSource;
 

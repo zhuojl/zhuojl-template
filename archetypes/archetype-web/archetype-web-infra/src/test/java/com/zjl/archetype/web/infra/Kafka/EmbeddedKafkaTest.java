@@ -44,10 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 )
 @TestPropertySource(properties = "spring.kafka.consumer.auto-offset-reset = earliest")
 @TestInstance(Lifecycle.PER_CLASS)
-
-@SpringBootTest(classes = EmbeddedKafkaTest.EmbeddedKafkaTestApplication.class)
-@ExtendWith(SpringExtension.class)
-public class EmbeddedKafkaTest {
+public class EmbeddedKafkaTest implements KafkaApplicationTest{
 
     static final String TOPIC_NAME = "topic";
 
@@ -103,10 +100,5 @@ public class EmbeddedKafkaTest {
         assertThat(consumerRecord.key()).isEqualTo(KEY);
         assertThat(consumerRecord.value()).isEqualTo(VALUE);
         assertThat(consumptionQueue).isEmpty();
-    }
-
-
-    @SpringBootApplication
-    static class EmbeddedKafkaTestApplication {
     }
 }
