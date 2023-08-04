@@ -19,7 +19,7 @@ public class CustomerDaoTest implements SpringApplicationTest {
 
     @Test
     public void testGetLatest() {
-        CustomerDO zjlUser = customerDao.getByCustomerId(DEFAULT_USER_ID);
+        CustomerDO zjlUser = customerDao.getByCustomerId("zjlId");
         System.out.println(zjlUser);
     }
 }

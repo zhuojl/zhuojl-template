@@ -1,6 +1,5 @@
 package com.zjl.archetype.web.infra.Kafka;
 
-import com.zjl.archetype.web.infra.SpringApplicationTest;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -10,15 +9,17 @@ import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.Duration;
 import java.util.concurrent.BlockingQueue;
@@ -34,19 +35,19 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @link {https://blog.mimacom.com/embeddedkafka-kafka-auto-configure-springboottest-bootstrapserversproperty/}
  */
+
+@Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
+
 @EmbeddedKafka(
     bootstrapServersProperty = "spring.kafka.bootstrap-servers",
     topics = EmbeddedKafkaTest.TOPIC_NAME
 )
 @TestPropertySource(properties = "spring.kafka.consumer.auto-offset-reset = earliest")
 @TestInstance(Lifecycle.PER_CLASS)
-@Ignore // 默认不进行容器启动的测试，infra层常年不会更改。除了dao
-public class EmbeddedKafkaTest implements SpringApplicationTest {
 
-    @Configuration
-    @EnableAutoConfiguration
-    static class TestConfiguration {
-    }
+@SpringBootTest(classes = EmbeddedKafkaTest.EmbeddedKafkaTestApplication.class)
+@ExtendWith(SpringExtension.class)
+public class EmbeddedKafkaTest {
 
     static final String TOPIC_NAME = "topic";
 
@@ -104,4 +105,8 @@ public class EmbeddedKafkaTest implements SpringApplicationTest {
         assertThat(consumptionQueue).isEmpty();
     }
 
+
+    @SpringBootApplication
+    static class EmbeddedKafkaTestApplication {
+    }
 }
