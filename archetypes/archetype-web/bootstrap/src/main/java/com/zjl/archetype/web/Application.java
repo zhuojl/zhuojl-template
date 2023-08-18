@@ -11,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author Frank Zhang
  */
 @SpringBootApplication
-@EnableFeignClients
 public class Application {
 
     public static void main(String[] args) {
