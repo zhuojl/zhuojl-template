@@ -19,7 +19,15 @@ public class CustomerDaoTest implements MysqlApplicationTest{
     public void testGetLatest() {
         CustomerDO zjlUser = customerDao.getByCustomerId("zjlId");
         System.out.println(zjlUser);
-    }  @Test
+    }
+
+    @Test
+    public void testGetByCompanyName() {
+        CustomerDO zjlUser = customerDao.getByCompanyName("my");
+        System.out.println(zjlUser);
+    }
+
+    @Test
     public void testInsert() {
 
         CustomerDO customerDO = new CustomerDO();

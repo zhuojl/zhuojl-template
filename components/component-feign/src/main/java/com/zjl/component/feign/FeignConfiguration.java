@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Bean;
 public class FeignConfiguration {
 
 
-    @Bean
-    @ConditionalOnMissingBean(SignRequestInterceptor.class)
-    public SignRequestInterceptor signRequestInterceptor() {
-        return new Md5SignRequestInterceptor();
-    }
+//    @Bean
+//    @ConditionalOnMissingBean(SignRequestInterceptor.class)
+//    public SignRequestInterceptor signRequestInterceptor() {
+//        return new Md5SignRequestInterceptor();
+//    }
 
     @Bean
     @ConditionalOnMissingBean(FeignLoggerFactory.class)
