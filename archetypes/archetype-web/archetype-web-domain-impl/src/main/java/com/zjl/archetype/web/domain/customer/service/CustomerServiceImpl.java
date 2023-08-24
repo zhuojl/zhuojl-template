@@ -7,6 +7,7 @@ import com.zjl.archetype.web.infra.dao.CustomerDao;
 import com.zjl.archetype.web.infra.event.EventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class CustomerServiceImpl implements CustomerService {
@@ -23,15 +24,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getByCompanyName(String customerName) {
-        CustomerDO customerDO = customerDao.getByCompanyName(customerName);
+        CustomerDO customerDO = customerDao.getByCustomerId(customerName);
         return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
     }
 
     @Override
+    @Transactional
     public String addCustomer(Customer customer) {
         CustomerDO customerDO = new CustomerDO();
         // convert customer 2 CustomerDO
-        customerDao.save(customerDO);
+        customerDao.insert(customerDO);
         // event publish 领域逻辑时间在领域层发送
         eventPublisher.publish(new Object());
 

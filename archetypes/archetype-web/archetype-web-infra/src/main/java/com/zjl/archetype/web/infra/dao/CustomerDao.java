@@ -7,10 +7,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface CustomerDao extends BaseMapper<CustomerDO> {
 
-    @Select("select * from customer where customerId = #{customerId}")
+    @Select("select * from customer where customer_id = #{customerId}")
     CustomerDO getByCustomerId(String customerId);
-
-    int save(CustomerDO entity);
-
-    CustomerDO getByCompanyName(String customerName);
 }
