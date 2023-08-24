@@ -1,6 +1,7 @@
 package com.zjl.archetype.web.infra.dao;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 
