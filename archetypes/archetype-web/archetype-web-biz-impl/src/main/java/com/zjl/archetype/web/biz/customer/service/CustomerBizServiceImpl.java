@@ -17,6 +17,7 @@ import com.zjl.archetype.web.domain.customer.service.CustomerService;
 import com.zjl.component.exception.ExceptionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CustomerBizServiceImpl implements CustomerBizService {
@@ -25,12 +26,13 @@ public class CustomerBizServiceImpl implements CustomerBizService {
     private CustomerService customerService;
 
     @Override
+    @Transactional
     public Response<String> addCustomer(CustomerAddCmd cmd) {
         CustomerValidator.validate(cmd.getCustomerDTO());
-        Customer customer = customerService.getByCompanyName(cmd.getCustomerDTO().getCustomerName());
-        if (Objects.nonNull(customer)) {
-            throw ExceptionFactory.bizException(BizErrorEnum.COMPANY_NAME_REPEAT);
-        }
+//        Customer customer = customerService.getByCompanyName(cmd.getCustomerDTO().getCustomerName());
+//        if (Objects.nonNull(customer)) {
+//            throw ExceptionFactory.bizException(BizErrorEnum.COMPANY_NAME_REPEAT);
+//        }
         Customer save = CustomerBizMapper.INSTANCE.toCustomer(cmd.getCustomerDTO());
         return Response.of(customerService.addCustomer(save));
     }

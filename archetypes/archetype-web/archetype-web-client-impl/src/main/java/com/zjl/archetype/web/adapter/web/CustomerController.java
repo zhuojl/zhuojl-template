@@ -2,8 +2,6 @@ package com.zjl.archetype.web.adapter.web;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
 import com.zjl.archetype.web.biz.customer.dto.CustomerListByNameQry;
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
@@ -37,11 +35,11 @@ public class CustomerController implements CustomerClient {
         //return "Hello, welcome to COLA world!";
     }
 
-    public Response<String> addCustomer(@Valid CustomerAddCmd customerAddCmd) {
+    public Response<String> addCustomer(CustomerAddCmd customerAddCmd) {
         return customerBizService.addCustomer(customerAddCmd);
     }
 
-    public Response<List<CustomerDTO>> listByName(@Valid CustomerListByNameQry customerListByNameQry) {
+    public Response<List<CustomerDTO>> listByName(CustomerListByNameQry customerListByNameQry) {
         return customerBizService.listByName(customerListByNameQry);
     }
 }

@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
+
 public interface CustomerClient {
 
     @PostMapping(value = "/customer")
-    Response<String> addCustomer(@RequestBody CustomerAddCmd customerAddCmd);
+    Response<String> addCustomer(@Valid @RequestBody CustomerAddCmd customerAddCmd);
 
     @GetMapping(value = "/customer")
-    Response<List<CustomerDTO>> listByName(CustomerListByNameQry customerListByNameQry);
+    Response<List<CustomerDTO>> listByName(@Valid CustomerListByNameQry customerListByNameQry);
 }
