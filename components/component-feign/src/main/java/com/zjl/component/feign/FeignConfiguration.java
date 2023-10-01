@@ -7,6 +7,9 @@ import com.zjl.component.feign.interceptor.context.ContextInterceptor;
 import com.zjl.component.feign.interceptor.sign.Md5SignRequestInterceptor;
 import com.zjl.component.feign.interceptor.sign.SignRequestInterceptor;
 import com.zjl.component.feign.log.CustomFeignLoggerFactory;
+import com.zjl.component.feign.sign.FeignSignCondition;
+import com.zjl.component.feign.sign.Md5SignRequestInterceptor;
+import com.zjl.component.feign.sign.SignRequestInterceptor;
 import feign.Logger;
 import feign.codec.Decoder;
 import org.springframework.beans.factory.ObjectFactory;
@@ -17,10 +20,18 @@ import org.springframework.cloud.openfeign.FeignLoggerFactory;
 import org.springframework.cloud.openfeign.support.ResponseEntityDecoder;
 import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Configuration;
 
 public class FeignConfiguration {
 
 
+    @Bean
+    @ConditionalOnMissingBean(SignRequestInterceptor.class)
+    @Conditional(FeignSignCondition.class)
+    public SignRequestInterceptor signRequestInterceptor() {
+        return new Md5SignRequestInterceptor();
+    }
 
     @Bean
     public Decoder feignDecoder(ObjectFactory<HttpMessageConverters> messageConverters) {
