@@ -24,6 +24,8 @@
         <lombok.version>1.18.16</lombok.version>
         <mybatis.plus.spring.boot.version>3.3.0</mybatis.plus.spring.boot.version>
         <powermock.version>2.0.2</powermock.version>
+        <groovy.version>4.0.15</groovy.version>
+        <spock.version>2.3-groovy-4.0</spock.version>
 
     </properties>
 
@@ -171,105 +173,186 @@
                 <version>${org.mapstruct.version}</version>
             </dependency>
 
-        </dependencies>
-    </dependencyManagement>
+            <!-- 单元测试 -->
+            <dependency>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy-sql</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
+            <!-- Optional dependencies for using Spock -->
+            <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
 
-    <build>
+            <!-- Mandatory dependencies for using Spock -->
+            <dependency>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-core</artifactId>
+                <version>${spock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-junit4</artifactId>
+                <version>${spock.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-archetype-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>checkstyle</id>-->
-<!--                        <phase>validate</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>check</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <failOnViolation>true</failOnViolation>-->
-<!--                            <consoleOutput>true</consoleOutput>-->
-<!--                            <failsOnError>true</failsOnError>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <configLocation>codestyle/checkstyle.xml</configLocation>-->
-<!--                    <excludes>-->
-<!--                    </excludes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
 
-            <plugin>
-                <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <!--deploy 时忽略 model-->
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-        </plugins>
+            <!-- enables mocking of classes (in addition to interfaces) -->
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <!--             enables mocking of classes without default constructor (together with ByteBuddy or CGLIB)  -->
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>3.3</version>
+                <scope>test</scope>
+            </dependency>
+            <!--only required if Hamcrest matchers are used -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <scope>test</scope>
+            </dependency>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                        <annotationProcessorPaths>
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                                <version>${lombok.version}</version>
-                            </path>
-                            <!-- This is needed when using Lombok 1.18.16 and above -->
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok-mapstruct-binding</artifactId>
-                                <version>${lombok-mapstruct-binding.version}</version>
-                            </path>
-                            <!-- Mapstruct should follow the lombok path(s) -->
-                            <path>
-                                <groupId>org.mapstruct</groupId>
-                                <artifactId>mapstruct-processor</artifactId>
-                                <version>${org.mapstruct.version}</version>
-                            </path>
-                        </annotationProcessorPaths>
-                        <compilerArgs>
-                            <compilerArg>
-                                -Amapstruct.suppressGeneratorTimestamp=true
-                            </compilerArg>
-                            <compilerArg>
-                                -Amapstruct.suppressGeneratorVersionInfoComment=true
-                            </compilerArg>
-                        </compilerArgs>
-                    </configuration>
-                </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>3.0.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.2.0</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+            <!-- 需要指定1.9.0 避免idea执行异常 -->
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-engine</artifactId>
+                <version>1.9.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-commons</artifactId>
+                <version>1.9.0</version>
+            </dependency>
 
-</project>
+
+        <!-- 单元测试 -->
+
+    </dependencies>
+</dependencyManagement>
+
+<build>
+
+<plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-archetype-plugin</artifactId>
+        <version>3.2.0</version>
+    </plugin>
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+    <!--                <version>3.0.0</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>checkstyle</id>-->
+    <!--                        <phase>validate</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>check</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <failOnViolation>true</failOnViolation>-->
+    <!--                            <consoleOutput>true</consoleOutput>-->
+    <!--                            <failsOnError>true</failsOnError>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--                <configuration>-->
+    <!--                    <configLocation>codestyle/checkstyle.xml</configLocation>-->
+    <!--                    <excludes>-->
+    <!--                    </excludes>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+
+    <plugin>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>3.0.0-M1</version>
+        <!--deploy 时忽略 model-->
+        <configuration>
+            <skip>true</skip>
+        </configuration>
+    </plugin>
+
+    <!-- Mandatory plugins for using Spock -->
+    <plugin>
+        <!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
+        visit https://github.com/groovy/GMavenPlus/wiki -->
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>compile</goal>
+                    <goal>compileTests</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+</plugins>
+
+<pluginManagement>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>${lombok.version}</version>
+                    </path>
+                    <!-- This is needed when using Lombok 1.18.16 and above -->
+                    <path>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok-mapstruct-binding</artifactId>
+                        <version>${lombok-mapstruct-binding.version}</version>
+                    </path>
+                    <!-- Mapstruct should follow the lombok path(s) -->
+                    <path>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct-processor</artifactId>
+                        <version>${org.mapstruct.version}</version>
+                    </path>
+                </annotationProcessorPaths>
+                <compilerArgs>
+                    <compilerArg>
+                        -Amapstruct.suppressGeneratorTimestamp=true
+                    </compilerArg>
+                    <compilerArg>
+                        -Amapstruct.suppressGeneratorVersionInfoComment=true
+                    </compilerArg>
+                </compilerArgs>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.0.1</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.2.0</version>
+        </plugin>
+    </plugins>
+</pluginManagement>
+</build>
+
+    </project>
