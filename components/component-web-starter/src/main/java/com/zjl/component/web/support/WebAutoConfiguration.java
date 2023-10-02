@@ -56,10 +56,4 @@ public class WebAutoConfiguration {
         return new GlobalExceptionHandler();
     }
 
-    @Bean
-    @ConditionalOnMissingBean(RestResultWrapper.class)
-    public RestResultWrapper restResultWrapper() {
-        return new RestResultWrapper();
-    }
-
 }
