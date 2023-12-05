@@ -11,9 +11,6 @@ public class RequestContextHolder {
         return requestContextLocal.get().getUserId();
     }
 
-    public static String getTraceId() {
-        return requestContextLocal.get().getTraceId();
-    }
 
     public static String getRealIp() {
         return requestContextLocal.get().getRealIp();

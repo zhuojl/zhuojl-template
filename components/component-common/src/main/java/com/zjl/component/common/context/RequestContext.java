@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 public class RequestContext {
 
     private String realIp;
-    private String traceId;
     private String userId;
 
 }

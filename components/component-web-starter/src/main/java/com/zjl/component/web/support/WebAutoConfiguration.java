@@ -1,5 +1,7 @@
 package com.zjl.component.web.support;
 
+import com.zjl.component.web.support.context.MDCContextFilter;
+import com.zjl.component.web.support.context.RequestContextFilter;
 import com.zjl.component.web.support.err.handler.GlobalExceptionHandler;
 import com.zjl.component.web.support.err.handler.HttpErrorHandler;
 import com.zjl.component.web.support.log.ReqRespLoggingFilter;
@@ -28,6 +30,18 @@ public class WebAutoConfiguration {
     @ConditionalOnMissingBean(ReqRespLoggingFilter.class)
     public ReqRespLoggingFilter reqRespLoggingFilter() {
         return new ReqRespLoggingFilter();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(RequestContextFilter.class)
+    public RequestContextFilter contextFilter() {
+        return new RequestContextFilter();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(MDCContextFilter.class)
+    public MDCContextFilter mdcContextFilter() {
+        return new MDCContextFilter();
     }
 
     @Bean
