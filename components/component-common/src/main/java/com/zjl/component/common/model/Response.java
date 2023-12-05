@@ -13,22 +13,18 @@ public class Response<T> extends DTO {
 
     private static final long serialVersionUID = 1L;
 
-    private boolean success;
-
     private ErrorInfo error;
 
     private T data;
 
-    public static <T> Response of(T t) {
-        Response response = new Response();
-        response.setSuccess(true);
+    public static <T> Response success(T t) {
+        Response<T> response = new Response<>();
         response.setData(t);
         return response;
     }
 
-    public static Response buildFailure(IError error) {
+    public static Response failure(IError error) {
         Response response = new Response();
-        response.setSuccess(false);
         ErrorInfo errorInfo = new ErrorInfo();
         errorInfo.setErrCode(error.errorCode());
         errorInfo.setErrMessage(error.errorMsg());
@@ -36,25 +32,22 @@ public class Response<T> extends DTO {
         return response;
     }
 
-    public static Response buildFailure(String errCode, String errMessage) {
+    public static Response failure(String errCode, String errMessage) {
         Response response = new Response();
-        response.setSuccess(false);
         ErrorInfo errorInfo = new ErrorInfo();
         errorInfo.setErrCode(errCode);
         errorInfo.setErrMessage(errMessage);
         response.setError(errorInfo);
         return response;
     }
-    public static Response buildFailure(ErrorInfo errorInfo) {
+    public static Response failure(ErrorInfo errorInfo) {
         Response response = new Response();
-        response.setSuccess(false);
         response.setError(errorInfo);
         return response;
     }
 
-    public static Response buildFailure(BaseException baseException) {
+    public static Response failure(BaseException baseException) {
         Response response = new Response();
-        response.setSuccess(false);
         ErrorInfo errorInfo = new ErrorInfo();
         errorInfo.setErrCode(baseException.getErrCode());
         errorInfo.setErrMessage(baseException.getMessage());
@@ -63,17 +56,7 @@ public class Response<T> extends DTO {
     }
 
     public static Response buildSuccess() {
-        Response response = new Response();
-        response.setSuccess(true);
-        return response;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
+        return new Response();
     }
 
     public T getData() {

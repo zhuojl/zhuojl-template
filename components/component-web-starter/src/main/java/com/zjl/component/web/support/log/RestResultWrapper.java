@@ -47,8 +47,8 @@ public class RestResultWrapper implements ResponseBodyAdvice<Object> {
                                   ServerHttpRequest request, ServerHttpResponse response) {
         log.warn("this should not happen, please return Response type, method:{}", returnType.getMethod());
         if (selectedConverterType.isAssignableFrom(StringHttpMessageConverter.class)) {
-            return JSONObject.toJSONString(Response.of(body));
+            return JSONObject.toJSONString(Response.success(body));
         }
-        return Response.of(body);
+        return Response.success(body);
     }
 }

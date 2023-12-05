@@ -34,7 +34,7 @@ public class HttpErrorHandler extends BasicErrorController {
             errorInfo.setErrCode("SYS." + status.value());
             errorInfo.setErrMessage(status.getReasonPhrase());
             errorInfo.setErrDetail(body);
-            Response<Map<String, Object>> response = Response.buildFailure(errorInfo);
+            Response<Map<String, Object>> response = Response.failure(errorInfo);
 
             return new ResponseEntity(response, status);
         }

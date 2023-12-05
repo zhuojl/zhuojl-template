@@ -36,7 +36,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Throwable.class)
     public final ResponseEntity<Object> handleExceptionGlobal(Throwable e, WebRequest request) throws Exception {
         LOGGER.error("handleExceptionGlobal EXCEPTION, errorMsg:{}", e.getMessage(), e);
-        return new ResponseEntity<>(Response.buildFailure(CommonErrorEnum.INNER_ERROR),
+        return new ResponseEntity<>(Response.failure(CommonErrorEnum.INNER_ERROR),
             HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -46,7 +46,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         if (LOGGER.isErrorEnabled()) {
             LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
         }
-        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Response.failure(e), HttpStatus.BAD_REQUEST);
 
     }
     @ExceptionHandler(BadRequestException.class)
@@ -55,24 +55,24 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         if (LOGGER.isErrorEnabled()) {
             LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
         }
-        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Response.failure(e), HttpStatus.BAD_REQUEST);
 
     }
 
     @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<Object> handleNotFoundException(NotFoundException e, WebRequest request) throws Exception {
-        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(Response.failure(e), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(PermissionDeniedException.class)
     public final ResponseEntity<Object> handlePermissionDeniedException(PermissionDeniedException e, WebRequest request) throws Exception {
-        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(Response.failure(e), HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(SysException.class)
     public final ResponseEntity<Object> handleSysException(SysException e, WebRequest request) throws Exception {
         LOGGER.error("SYS EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
-        return new ResponseEntity<>(Response.buildFailure(e), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(Response.failure(e), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             LOGGER.error("handleExceptionInternal error", ex);
         }
         logger.error("xxxx", ex);
-        return new ResponseEntity<>(Response.buildFailure(CommonErrorEnum.INNER_ERROR), headers, status);
+        return new ResponseEntity<>(Response.failure(CommonErrorEnum.INNER_ERROR), headers, status);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             }
         }
 
-        Response response = Response.buildFailure(CommonErrorEnum.INVALID_PARAMETER.errorCode(), String.join(",", details));
+        Response response = Response.failure(CommonErrorEnum.INVALID_PARAMETER.errorCode(), String.join(",", details));
         return new ResponseEntity<>(response, headers, HttpStatus.BAD_REQUEST);
     }
 }
