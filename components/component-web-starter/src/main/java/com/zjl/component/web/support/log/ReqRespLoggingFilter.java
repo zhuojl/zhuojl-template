@@ -1,18 +1,5 @@
 package com.zjl.component.web.support.log;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.alibaba.fastjson.JSONObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -20,8 +7,16 @@ import org.springframework.core.annotation.Order;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Objects;
+
 /**
  * 用于打印http请求和响应
+ * 通用请求打印，也可以使用 CommonsRequestLoggingFilter
  */
 @Order(Ordered.HIGHEST_PRECEDENCE + 90)        //设置优先级，数值越低优先级越高
 // WebFilter过滤路径设置无效，通过FilterRegistrationBean配置
@@ -29,6 +24,14 @@ public class ReqRespLoggingFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReqRespLoggingFilter.class);
 
 
+    /**
+     * 配置项：
+     * 1. 白名单
+     * 2. 日志长度
+     * <p>
+     * 最长日志长度，可配置
+     */
+    private Integer maxLogLength = 10000;
 
     public ReqRespLoggingFilter() {
     }
@@ -39,30 +42,52 @@ public class ReqRespLoggingFilter implements Filter {
 
         handleTraceId(request);
 
-        if (LOGGER.isInfoEnabled()) {
-            ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest)request);
-            ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(
-                (HttpServletResponse)response);
-            LOGGER.info("common log request, method:{}, uri:{}, param:{}, body:{}", requestWrapper.getMethod(),
-                requestWrapper.getRequestURI(), JSONObject.toJSON(requestWrapper.getParameterMap()),
-                new String(requestWrapper.getContentAsByteArray(), StandardCharsets.UTF_8));
-
-            chain.doFilter(requestWrapper, responseWrapper);
-
-            LOGGER.info("common log response, method:{}, uri:{}, body:{}", requestWrapper.getMethod(),
-                requestWrapper.getRequestURI(),
-                new String(responseWrapper.getContentAsByteArray(), StandardCharsets.UTF_8));
-
-            // need this to copy back to original response
-            responseWrapper.copyBodyToResponse();
-
-        } else {
+        if (!LOGGER.isInfoEnabled()) {
             chain.doFilter(request, response);
+            return;
         }
+
+        ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest) request, maxLogLength);
+        ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) response);
+
+        LOGGER.info("common log request, method:{}, uri:{},\t requestParam:{},\t requestBody:{},\t",
+            requestWrapper.getMethod(), requestWrapper.getRequestURI(), requestWrapper.getQueryString(), requestPayloadBody(requestWrapper));
+        long timeMillStart = System.currentTimeMillis();
+
+        chain.doFilter(requestWrapper, responseWrapper);
+
+        LOGGER.info("common log response, method:{}, uri:{}, time:{}, responseBody:{}",
+            requestWrapper.getMethod(), requestWrapper.getRequestURI(), System.currentTimeMillis() - timeMillStart, responsePayloadBody(responseWrapper));
+
+        // need this to copy back to original response
+        responseWrapper.copyBodyToResponse();
     }
 
     private void handleTraceId(ServletRequest request) {
         // 在没有sleuth的场景下，手动注入traceId，方便日志排查
+    }
+
+    private String requestPayloadBody(ContentCachingRequestWrapper wrapper) {
+        return getString(wrapper.getContentAsByteArray(), wrapper.getCharacterEncoding());
+    }
+
+    private String responsePayloadBody(ContentCachingResponseWrapper wrapper) {
+        return getString(wrapper.getContentAsByteArray(), wrapper.getCharacterEncoding());
+    }
+
+    private String getString(byte[] contentAsByteArray, String characterEncoding) {
+        if (Objects.isNull(contentAsByteArray)) {
+            return null;
+        }
+        if (contentAsByteArray.length > 0) {
+            int length = Math.min(contentAsByteArray.length, maxLogLength);
+            try {
+                return new String(contentAsByteArray, 0, length, characterEncoding);
+            } catch (UnsupportedEncodingException ex) {
+                return "[unknown]";
+            }
+        }
+        return null;
     }
 
     @Override

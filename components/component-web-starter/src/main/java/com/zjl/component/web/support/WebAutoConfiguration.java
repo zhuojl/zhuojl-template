@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,14 +34,6 @@ public class WebAutoConfiguration {
     @ConditionalOnMissingBean(HttpErrorHandler.class)
     public HttpErrorHandler httpErrorHandler(ErrorAttributes errorAttributes, ServerProperties serverProperties) {
         return new HttpErrorHandler(errorAttributes, serverProperties);
-    }
-
-    @Bean
-    public FilterRegistrationBean registerReqRespLoggingFilter(ReqRespLoggingFilter reqRespLoggingFilter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(reqRespLoggingFilter);
-        registration.addUrlPatterns("/*");
-        return registration;
     }
 
     @Bean
