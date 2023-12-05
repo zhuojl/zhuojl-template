@@ -50,14 +50,16 @@ public class ReqRespLoggingFilter implements Filter {
         ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest) request, maxLogLength);
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) response);
 
-        LOGGER.info("common log request, method:{}, uri:{},\t requestParam:{},\t requestBody:{},\t",
-            requestWrapper.getMethod(), requestWrapper.getRequestURI(), requestWrapper.getQueryString(), requestPayloadBody(requestWrapper));
+        // XXX 删除requestBody因为，在此提前读取，「在序列化」的时候会报错；在序列化后，可以通过 getContentAsByteArray 获取
+        LOGGER.info("common log request, method:{}, uri:{},\t requestParam:{}",
+            requestWrapper.getMethod(), requestWrapper.getRequestURI(), requestWrapper.getQueryString());
         long timeMillStart = System.currentTimeMillis();
 
         chain.doFilter(requestWrapper, responseWrapper);
 
-        LOGGER.info("common log response, method:{}, uri:{}, time:{}, responseBody:{}",
-            requestWrapper.getMethod(), requestWrapper.getRequestURI(), System.currentTimeMillis() - timeMillStart, responsePayloadBody(responseWrapper));
+        LOGGER.info("common log response, method:{}, uri:{}, time:{}, requestBody:{}, responseBody:{}",
+            requestWrapper.getMethod(), requestWrapper.getRequestURI(), System.currentTimeMillis() - timeMillStart,
+            requestPayloadBody(requestWrapper), responsePayloadBody(responseWrapper));
 
         // need this to copy back to original response
         responseWrapper.copyBodyToResponse();
