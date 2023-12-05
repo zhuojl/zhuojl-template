@@ -1,4 +1,4 @@
-package com.zjl.component.feign.sign;
+package com.zjl.component.feign.interceptor.sign;
 
 import com.zjl.component.common.exception.CommonErrorEnum;
 import com.zjl.component.common.exception.ExceptionFactory;
