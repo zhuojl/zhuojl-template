@@ -27,4 +27,4 @@ target/
 out/
 .DS_Store
 .vscode/settings.json
-./logs
+logs/
