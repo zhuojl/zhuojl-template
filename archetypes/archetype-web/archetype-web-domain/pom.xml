@@ -22,7 +22,7 @@
         <!-- COLA components -->
         <dependency>
             <groupId>com.zjl.component</groupId>
-            <artifactId>component-exception</artifactId>
+            <artifactId>component-common</artifactId>
         </dependency>
         <!-- COLA components end -->
 

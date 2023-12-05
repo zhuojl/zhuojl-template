@@ -1,6 +1,8 @@
 package com.zjl.component.web.support.sign;
 
-import com.zjl.component.exception.SysException;
+import com.zjl.component.common.exception.CommonErrorEnum;
+import com.zjl.component.common.exception.ExceptionFactory;
+import com.zjl.component.common.exception.SysException;
 import com.zjl.component.secure.sign.Md5Signer;
 import com.zjl.component.secure.sign.RequestSignEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -44,11 +46,7 @@ public class Md5SignValidateFilter implements SignValidateFilter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
         throws IOException, ServletException {
 
-        try {
-            signValidate(request);
-        } catch (Exception e) {
-            throw new UnsupportedOperationException("403");
-        }
+        signValidate(request);
 
         chain.doFilter(request, response);
     }
@@ -62,12 +60,12 @@ public class Md5SignValidateFilter implements SignValidateFilter {
 
         String sign = httpServletRequest.getHeader(Md5Signer.KEY_HEADER_SIGN);
         if (Strings.isEmpty(sign)) {
-            throw new SysException("sign not be empty");
+            throw ExceptionFactory.badRequestException(CommonErrorEnum.INVALID_PARAMETER);
         }
         RequestSignEntity requestSignEntity = buildSignRequest(httpServletRequest);
         String signResult = md5Signer.sign(requestSignEntity);
         if (!sign.equals(signResult)) {
-            throw new SysException("asdfadf");
+            throw ExceptionFactory.badRequestException(CommonErrorEnum.INVALID_PARAMETER);
         }
     }
 
@@ -95,14 +93,14 @@ public class Md5SignValidateFilter implements SignValidateFilter {
                 try {
                     key = URLDecoder.decode(entry.getKey(), StandardCharsets.UTF_8.name());
                 } catch (UnsupportedEncodingException e) {
-                    throw new SysException("UnsupportedEncodingException");
+                    throw ExceptionFactory.sysException(CommonErrorEnum.INNER_ERROR);
                 }
                 String value = "";
                 if (Objects.nonNull(entry.getValue()) && entry.getValue().length != 0) {
                     try {
                         value = URLDecoder.decode(entry.getValue()[0], StandardCharsets.UTF_8.name());
                     } catch (UnsupportedEncodingException e) {
-                        throw new SysException("UnsupportedEncodingException");
+                        throw ExceptionFactory.sysException(CommonErrorEnum.INNER_ERROR);
                     }
                 }
                 queryMap.put(key, value);

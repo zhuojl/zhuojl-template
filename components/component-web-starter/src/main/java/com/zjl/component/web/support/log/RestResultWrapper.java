@@ -1,6 +1,6 @@
 package com.zjl.component.web.support.log;
 
-import com.zjl.component.dto.Response;
+import com.zjl.component.common.model.Response;
 import com.alibaba.fastjson.JSONObject;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,12 +28,12 @@ public class RestResultWrapper implements ResponseBodyAdvice<Object> {
     /**
      * 是否允许map，false，则不包装
      */
-    @Value("${rest.warpResponse.enableWrap: true}")
-    private Boolean enableWrap;
+    @Value("${rest.response.enableWrapBody: true}")
+    private Boolean enableWrapBody;
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        if (Boolean.FALSE.equals(enableWrap)) {
+        if (Boolean.FALSE.equals(enableWrapBody)) {
             return false;
         }
         // 不是response返回的场景

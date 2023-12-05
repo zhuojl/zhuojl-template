@@ -3,14 +3,14 @@ package com.zjl.component.web.support.err.handler;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zjl.component.dto.Response;
-import com.zjl.component.exception.BadRequestException;
-import com.zjl.component.exception.BizException;
+import com.zjl.component.common.model.Response;
+import com.zjl.component.common.exception.BadRequestException;
+import com.zjl.component.common.exception.BizException;
 
-import com.zjl.component.exception.CommonErrorEnum;
-import com.zjl.component.exception.NotFoundException;
-import com.zjl.component.exception.PermissionDeniedException;
-import com.zjl.component.exception.SysException;
+import com.zjl.component.common.exception.CommonErrorEnum;
+import com.zjl.component.common.exception.NotFoundException;
+import com.zjl.component.common.exception.PermissionDeniedException;
+import com.zjl.component.common.exception.SysException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

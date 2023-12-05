@@ -1,6 +1,7 @@
 package com.zjl.component.feign.sign;
 
-import com.zjl.component.exception.SysException;
+import com.zjl.component.common.exception.CommonErrorEnum;
+import com.zjl.component.common.exception.ExceptionFactory;
 import com.zjl.component.secure.sign.Md5Signer;
 import com.zjl.component.secure.sign.RequestSignEntity;
 import feign.Request.HttpMethod;
@@ -40,12 +41,8 @@ public class Md5SignRequestInterceptor implements SignRequestInterceptor {
             requestSignEntity.setBody(DEFAULT_EMPTY_BODY.equals(body) ? "" : body);
         }
 
-        try {
-            String sign = md5Signer.sign(requestSignEntity);
-            template.header(Md5Signer.KEY_HEADER_SIGN, sign);
-        } catch (Exception e) {
-            throw new SysException("sign error");
-        }
+        String sign = md5Signer.sign(requestSignEntity);
+        template.header(Md5Signer.KEY_HEADER_SIGN, sign);
     }
 
     private void fillQueryMap(Map<String, String> queryMap, String body) {
@@ -77,14 +74,14 @@ public class Md5SignRequestInterceptor implements SignRequestInterceptor {
                 try {
                     key = URLDecoder.decode(pair.substring(0, idx), StandardCharsets.UTF_8.name());
                 } catch (UnsupportedEncodingException e) {
-                    throw new SysException("");
+                    throw ExceptionFactory.sysException(CommonErrorEnum.INVALID_PARAMETER);
                 }
                 String value = "";
                 if (idx + 1 < pair.length()) {
                     try {
                         value = URLDecoder.decode(pair.substring(idx + 1), StandardCharsets.UTF_8.name());
                     } catch (UnsupportedEncodingException e) {
-                        throw new SysException("");
+                        throw ExceptionFactory.sysException(CommonErrorEnum.INVALID_PARAMETER);
                     }
                 }
                 queryMap.put(key, value);

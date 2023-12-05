@@ -2,7 +2,7 @@ package com.zjl.archetype.web.biz.customer.service;
 
 import java.util.List;
 
-import com.zjl.component.dto.Response;
+import com.zjl.component.common.model.Response;
 
 import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
 import com.zjl.archetype.web.biz.customer.dto.CustomerListByNameQry;

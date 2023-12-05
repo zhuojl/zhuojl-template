@@ -83,12 +83,7 @@
             <!--COLA components-->
             <dependency>
                 <groupId>com.zjl.component</groupId>
-                <artifactId>component-exception</artifactId>
-                <version>${cola.components.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.zjl.component</groupId>
-                <artifactId>component-dto</artifactId>
+                <artifactId>component-common</artifactId>
                 <version>${cola.components.version}</version>
             </dependency>
             <dependency>

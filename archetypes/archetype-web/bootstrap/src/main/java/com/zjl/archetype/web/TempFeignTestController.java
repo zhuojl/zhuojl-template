@@ -6,8 +6,10 @@ import java.util.Map;
 import com.zjl.archetype.web.infra.dao.CustomerDO;
 import com.zjl.archetype.web.infra.feign.FeignTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -54,5 +56,14 @@ public class TempFeignTestController {
         feignTest.test3(customerDO);
         customerDO.setCustomerId("asdfadsf");
         return customerDO;
+    }
+    @PostMapping(value = "/testFeign4", consumes = "application/x-www-form-urlencoded")
+    public CustomerDO testFeign4(CustomerDO customerDO) {
+
+        return new CustomerDO();
+    }
+    @PostMapping(value = "/testFeign5", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String testFeign5(@RequestBody CustomerDO customerDO) {
+        return "1";
     }
 }

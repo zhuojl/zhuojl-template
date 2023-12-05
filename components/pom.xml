@@ -11,8 +11,7 @@
     <description>${project.artifactId}</description>
 
     <modules>
-        <module>component-dto</module>
-        <module>component-exception</module>
+        <module>component-common</module>
         <module>component-web-starter</module>
         <module>component-common-secure</module>
         <module>component-feign</module>

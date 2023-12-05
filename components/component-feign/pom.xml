@@ -21,12 +21,7 @@
         <!-- cola组件依赖 -->
         <dependency>
             <groupId>com.zjl.component</groupId>
-            <artifactId>component-dto</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zjl.component</groupId>
-            <artifactId>component-exception</artifactId>
+            <artifactId>component-common</artifactId>
             <version>${project.version}</version>
         </dependency>
 

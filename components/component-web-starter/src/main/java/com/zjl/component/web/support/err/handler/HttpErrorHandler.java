@@ -4,8 +4,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.zjl.component.dto.ErrorInfo;
-import com.zjl.component.dto.Response;
+
+import com.zjl.component.common.model.ErrorInfo;
+import com.zjl.component.common.model.Response;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
