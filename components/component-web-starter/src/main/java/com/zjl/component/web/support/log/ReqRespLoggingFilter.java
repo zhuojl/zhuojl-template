@@ -52,7 +52,7 @@ public class ReqRespLoggingFilter implements Filter {
 
         // XXX 删除requestBody因为，在此提前读取，「在序列化」的时候会报错；在序列化后，可以通过 getContentAsByteArray 获取
         LOGGER.info("common log request, method:{}, uri:{},\t requestParam:{}",
-            requestWrapper.getMethod(), requestWrapper.getRequestURI(), requestWrapper.getQueryString());
+            requestWrapper.getMethod(), requestWrapper.getRequestURI(), requestWrapper.getParameterMap());
         long timeMillStart = System.currentTimeMillis();
 
         chain.doFilter(requestWrapper, responseWrapper);
@@ -74,7 +74,7 @@ public class ReqRespLoggingFilter implements Filter {
     }
 
     private String responsePayloadBody(ContentCachingResponseWrapper wrapper) {
-        return getString(wrapper.getContentAsByteArray(), wrapper.getCharacterEncoding());
+        return getString(wrapper.getContentAsByteArray(), "UTF-8");
     }
 
     private String getString(byte[] contentAsByteArray, String characterEncoding) {
