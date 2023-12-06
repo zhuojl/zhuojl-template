@@ -53,12 +53,8 @@ public class Md5SignValidateFilter implements SignValidateFilter {
 
     private void signValidate(ServletRequest request) throws IOException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        if (httpServletRequest.getRequestURI().contains("test")) {
-            return;
-        }
 
-
-        String sign = httpServletRequest.getHeader(Md5Signer.KEY_HEADER_SIGN);
+        String sign = httpServletRequest.getHeader(RequestSignEntity.KEY_HEADER_SIGN);
         if (Strings.isEmpty(sign)) {
             throw ExceptionFactory.badRequestException(CommonErrorEnum.INVALID_PARAMETER);
         }

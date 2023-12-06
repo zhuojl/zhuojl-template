@@ -42,7 +42,7 @@ public class Md5SignRequestInterceptor implements SignRequestInterceptor {
         }
 
         String sign = md5Signer.sign(requestSignEntity);
-        template.header(Md5Signer.KEY_HEADER_SIGN, sign);
+        template.header(RequestSignEntity.KEY_HEADER_SIGN, sign);
     }
 
     private void fillQueryMap(Map<String, String> queryMap, String body) {

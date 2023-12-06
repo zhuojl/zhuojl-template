@@ -1,8 +1,5 @@
 package com.zjl.component.web.support;
 
-import javax.servlet.Filter;
-
-import com.zjl.component.secure.sign.Md5Signer;
 import com.zjl.component.web.support.sign.Md5SignValidateFilter;
 import com.zjl.component.web.support.sign.SignValidateFilter;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +7,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+
+import javax.servlet.Filter;
 
 @ConditionalOnClass(Filter.class)
 public class SignAutoConfiguration {

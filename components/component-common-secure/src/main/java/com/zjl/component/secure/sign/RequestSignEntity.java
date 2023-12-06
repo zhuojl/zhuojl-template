@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 @Data
 public class RequestSignEntity {
+    public static final String KEY_HEADER_SIGN = "_sign";
     public static final String SPLIT = "&";
     private static String KEY_PATH = "path";
     private static String KEY_BODY = "body";

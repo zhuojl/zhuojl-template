@@ -8,8 +8,6 @@ import java.util.Objects;
 @Setter
 public class Md5Signer {
 
-    public static final String KEY_HEADER_SIGN = "_sign";
-
     private String secretKey;
 
     public Md5Signer(String secretKey) {
