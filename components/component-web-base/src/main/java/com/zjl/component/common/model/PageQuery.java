@@ -5,7 +5,7 @@ package com.zjl.component.common.model;
  *
  * @author jacky
  */
-public abstract class PageQuery extends Query {
+public abstract class PageQuery extends DTO {
     private static final long serialVersionUID = 1L;
 
     public static final String ASC = "ASC";

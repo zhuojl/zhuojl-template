@@ -4,12 +4,14 @@ package com.zjl.component.common.model;
 import com.zjl.component.common.exception.BaseException;
 import com.zjl.component.common.exception.IError;
 
+import java.io.Serializable;
+
 /**
  * Response to caller
  *
  * @author fulan.zjf 2017年10月21日 下午8:53:17
  */
-public class Response<T> extends DTO {
+public class Response<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

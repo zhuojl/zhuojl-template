@@ -88,6 +88,11 @@
             </dependency>
             <dependency>
                 <groupId>com.zjl.component</groupId>
+                <artifactId>component-web-base</artifactId>
+                <version>${cola.components.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zjl.component</groupId>
                 <artifactId>component-web-starter</artifactId>
                 <version>${cola.components.version}</version>
             </dependency>

@@ -12,6 +12,7 @@
 
     <modules>
         <module>component-common</module>
+        <module>component-web-base</module>
         <module>component-web-starter</module>
         <module>component-common-secure</module>
         <module>component-feign</module>

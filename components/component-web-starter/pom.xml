@@ -68,7 +68,7 @@
         <!-- cola组件依赖 -->
         <dependency>
             <groupId>com.zjl.component</groupId>
-            <artifactId>component-common</artifactId>
+            <artifactId>component-web-base</artifactId>
             <version>${project.version}</version>
         </dependency>
 
