@@ -1,5 +1,7 @@
 package com.zjl.component.common.exception;
 
+import com.zjl.component.common.model.ErrorInfo;
+
 /**
  * @ Description   :  异常工厂实现
  * @ Author        :  da.xue
@@ -67,6 +69,14 @@ public class ExceptionFactory {
 
     public static BizException bizException(IError error, Throwable throwable) {
         return new BizException(error, throwable);
+    }
+
+
+    public static ThirdServerException thirdServerException(ErrorInfo errorInfo) {
+        return new ThirdServerException(errorInfo);
+    }
+    public static ThirdServerException thirdServerException(ErrorInfo errorInfo, Throwable throwable) {
+        return new ThirdServerException(errorInfo, throwable);
     }
 
 }

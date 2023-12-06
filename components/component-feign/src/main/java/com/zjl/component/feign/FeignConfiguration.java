@@ -1,5 +1,6 @@
 package com.zjl.component.feign;
 
+import com.zjl.component.feign.decode.FeignErrorDecoder;
 import com.zjl.component.feign.interceptor.context.ContextInterceptor;
 import com.zjl.component.feign.interceptor.sign.Md5SignRequestInterceptor;
 import com.zjl.component.feign.interceptor.sign.SignRequestInterceptor;
@@ -32,6 +33,12 @@ public class FeignConfiguration {
     @Bean
     public Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
+    }
+
+
+    @Bean
+    public FeignErrorDecoder feignErrorDecoder() {
+        return new FeignErrorDecoder();
     }
 
 

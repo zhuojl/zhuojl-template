@@ -1,7 +1,5 @@
 package com.zjl.component.common.exception;
 
-import java.util.Map;
-
 /**
  * Base Exception is the parent of all exceptions
  *
@@ -12,9 +10,6 @@ public abstract class BaseException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     private String errCode;
-
-    // XXX 动态参数预留
-    private Map<String, Object> errorParam;
 
 
     BaseException(IError errorCode) {
@@ -31,9 +26,6 @@ public abstract class BaseException extends RuntimeException {
         return errCode;
     }
 
-    public Map<String, Object> getErrorParam() {
-        return errorParam;
-    }
 
 
 }
