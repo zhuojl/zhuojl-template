@@ -87,13 +87,9 @@ public final class FeignLogger extends Logger {
 
     @Override
     protected IOException logIOException(String configKey, Level logLevel, IOException ioe, long elapsedTime) {
-        log.info("{} : ERROR {}: {} \n cost time : {} ms", configKey, ioe.getClass().getSimpleName(), ioe.getMessage(), elapsedTime);
+        log.info("{} : ERROR {}: {} \n cost time : {} ms",
+            configKey, ioe.getClass().getSimpleName(), ioe.getMessage(), elapsedTime, ioe);
 
-        if (logLevel.ordinal() >= Level.FULL.ordinal()) {
-            StringWriter sw = new StringWriter();
-            ioe.printStackTrace(new PrintWriter(sw));
-            log.info("{} \n<--- END ERROR", sw);
-        }
         return ioe;
     }
 
