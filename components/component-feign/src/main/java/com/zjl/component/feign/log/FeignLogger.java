@@ -87,13 +87,12 @@ public final class FeignLogger extends Logger {
 
     @Override
     protected IOException logIOException(String configKey, Level logLevel, IOException ioe, long elapsedTime) {
-        log(configKey, "<--- ERROR %s: %s (%sms)", ioe.getClass().getSimpleName(), ioe.getMessage(),
-            elapsedTime);
+        log.info("{} : ERROR {}: {} \n cost time : {} ms", configKey, ioe.getClass().getSimpleName(), ioe.getMessage(), elapsedTime);
+
         if (logLevel.ordinal() >= Level.FULL.ordinal()) {
             StringWriter sw = new StringWriter();
             ioe.printStackTrace(new PrintWriter(sw));
-            log(configKey, "%s", sw.toString());
-            log(configKey, "<--- END ERROR");
+            log.info("{} \n<--- END ERROR", sw);
         }
         return ioe;
     }
@@ -101,5 +100,6 @@ public final class FeignLogger extends Logger {
     @Override
     protected void log(String configKey, String format, Object... args) {
         // feign中太多地方使用
+        log.error("unKnown  {} : {}", configKey, format);
     }
 }
