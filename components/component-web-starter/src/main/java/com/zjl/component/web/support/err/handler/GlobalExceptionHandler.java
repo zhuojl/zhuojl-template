@@ -35,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     public final ResponseEntity<Object> handleExceptionGlobal(Throwable e, WebRequest request) throws Exception {
-        LOGGER.error("handleExceptionGlobal EXCEPTION, errorMsg:{}", e.getMessage(), e);
+        LOGGER.error("handleExceptionGlobal EXCEPTION: {}, errorMsg:{}", e.getClass().getSimpleName(), e.getMessage(), e);
         return new ResponseEntity<>(Response.failure(CommonErrorEnum.INNER_ERROR),
             HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleBizException(BizException e, WebRequest request) throws Exception {
         //在Debug的时候，对于BizException也打印堆栈
         if (LOGGER.isErrorEnabled()) {
-            LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
+            LOGGER.error("handleExceptionGlobal EXCEPTION: {}, errorMsg:{}", e.getClass().getSimpleName(), e.getMessage(), e);
         }
         return new ResponseEntity<>(Response.failure(e), HttpStatus.BAD_REQUEST);
 
@@ -53,7 +53,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleBadRequestException(BadRequestException e, WebRequest request) throws Exception {
         //在Debug的时候，对于BizException也打印堆栈
         if (LOGGER.isErrorEnabled()) {
-            LOGGER.error("BIZ EXCEPTION, errorCode:{}, errorMsg:{}", e.getErrCode(), e.getMessage(), e);
+            LOGGER.error("handleExceptionGlobal EXCEPTION: {}, errorMsg:{}", e.getClass().getSimpleName(), e.getMessage(), e);
         }
         return new ResponseEntity<>(Response.failure(e), HttpStatus.BAD_REQUEST);
 
