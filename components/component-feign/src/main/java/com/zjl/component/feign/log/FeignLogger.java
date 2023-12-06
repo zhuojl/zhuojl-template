@@ -1,6 +1,7 @@
 package com.zjl.component.feign.log;
 
 
+import com.zjl.component.common.CommonConstants;
 import feign.Logger;
 import feign.Request;
 import feign.Response;
@@ -12,13 +13,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static feign.Util.*;
 
 
 public final class FeignLogger extends Logger {
 
+    private final Set<String> headerSet = new HashSet<>();
     private final org.slf4j.Logger log;
 
     public FeignLogger() {
@@ -35,11 +39,16 @@ public final class FeignLogger extends Logger {
 
     FeignLogger(org.slf4j.Logger logger) {
         this.log = logger;
+        this.headerSet.add(CommonConstants.USER_ID);
+        this.headerSet.add(CommonConstants.TRACE_ID);
     }
 
     private String headers(Map<String, Collection<String>> headerMap) {
         StringBuilder headers = new StringBuilder();
         for (String field : headerMap.keySet()) {
+            if (!headerSet.contains(field)) {
+                continue;
+            }
             for (String value : valuesOrEmpty(headerMap, field)) {
                 headers.append("\n").append(field).append(": ").append(value);
             }
