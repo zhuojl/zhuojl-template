@@ -1,11 +1,8 @@
 package com.zjl.component.web.support.context;
 
 import com.zjl.component.common.CommonConstants;
-import com.zjl.component.common.context.RequestContext;
-import com.zjl.component.common.context.RequestContextHolder;
-import com.zjl.component.web.support.context.util.IpUtil;
-import com.zjl.component.web.support.context.util.TraceIdUtil;
 import org.apache.catalina.connector.RequestFacade;
+import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -14,6 +11,7 @@ import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * 用于打印http请求和响应
@@ -32,7 +30,7 @@ public class MDCContextFilter implements Filter {
 
         try {
             String userId = requestFacade.getHeader(CommonConstants.USER_ID);
-            String traceId = TraceIdUtil.getTraceId(requestFacade);
+            String traceId = getTraceId(requestFacade);
 
             MDC.put(CommonConstants.TRACE_ID, traceId);
             MDC.put(CommonConstants.USER_ID, userId);
@@ -44,6 +42,20 @@ public class MDCContextFilter implements Filter {
             MDC.remove(CommonConstants.USER_ID);
             MDC.remove(CommonConstants.URI);
         }
+    }
+
+
+    private static String getTraceId(RequestFacade request) {
+        String traceId = request.getHeader(CommonConstants.TRACE_ID);
+        if (!Strings.isEmpty(traceId)) {
+            return traceId;
+        }
+        return createTraceId();
+
+    }
+
+    private static String createTraceId() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
 
