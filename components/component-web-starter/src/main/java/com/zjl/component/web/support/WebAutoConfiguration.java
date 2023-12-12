@@ -56,4 +56,9 @@ public class WebAutoConfiguration {
         return new GlobalExceptionHandler();
     }
 
+    @Bean
+    public RestResultWrapper restResultWrapper() {
+        return new RestResultWrapper();
+    }
+
 }
