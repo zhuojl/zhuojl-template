@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.infra.dao;
+package com.zjl.archetype.web.infra.dao.customer;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;

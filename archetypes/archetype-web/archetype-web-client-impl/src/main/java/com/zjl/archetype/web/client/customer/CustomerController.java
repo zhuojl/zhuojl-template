@@ -1,12 +1,9 @@
-package com.zjl.archetype.web.adapter.web;
-
-import java.util.List;
+package com.zjl.archetype.web.client.customer;
 
 import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
 import com.zjl.archetype.web.biz.customer.dto.CustomerListByNameQry;
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
 import com.zjl.archetype.web.biz.customer.service.CustomerBizService;
-import com.zjl.archetype.web.client.customer.CustomerClient;
 import com.zjl.component.common.exception.CommonErrorEnum;
 import com.zjl.component.common.exception.ExceptionFactory;
 import com.zjl.component.common.model.Response;
@@ -15,6 +12,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 // 参数校验

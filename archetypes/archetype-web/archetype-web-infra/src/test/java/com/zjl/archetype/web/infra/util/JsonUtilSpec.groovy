@@ -1,8 +1,6 @@
 package com.zjl.archetype.web.infra.util
 
-import com.zjl.archetype.web.infra.dao.CustomerDO
-import com.zjl.archetype.web.infra.util.JsonUtil
-import org.junit.Rule
+import com.zjl.archetype.web.infra.dao.customer.CustomerDO
 
 /*
  * Copyright 2009 the original author or authors.
@@ -18,7 +16,6 @@ import org.junit.Rule
  * limitations under the License.
  */
 
-import org.junit.rules.TestName
 import spock.lang.Specification
 
 class JsonUtilSpec extends Specification {

@@ -1,6 +1,6 @@
 package com.zjl.archetype.web;
 
-import com.zjl.archetype.web.infra.dao.CustomerDO;
+import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import com.zjl.archetype.web.infra.feign.FeignTest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

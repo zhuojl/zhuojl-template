@@ -1,6 +1,6 @@
 package com.zjl.archetype.web.infra.feign;
 
-import com.zjl.archetype.web.infra.dao.CustomerDO;
+import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

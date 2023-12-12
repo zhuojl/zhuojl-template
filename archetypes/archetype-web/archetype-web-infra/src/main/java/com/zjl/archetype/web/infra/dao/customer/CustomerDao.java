@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.infra.dao;
+package com.zjl.archetype.web.infra.dao.customer;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;

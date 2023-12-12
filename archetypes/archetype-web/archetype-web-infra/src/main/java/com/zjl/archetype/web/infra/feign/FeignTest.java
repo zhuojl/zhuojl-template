@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.zjl.component.feign.FeignConfiguration;
 
-import com.zjl.archetype.web.infra.dao.CustomerDO;
+import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.http.MediaType;

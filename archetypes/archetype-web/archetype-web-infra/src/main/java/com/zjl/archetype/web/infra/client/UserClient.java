@@ -1,7 +1,7 @@
 package com.zjl.archetype.web.infra.client;
 
 import com.zjl.archetype.web.infra.client.dto.UserDto;
-import com.zjl.archetype.web.infra.dao.CustomerDO;
+import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import com.zjl.archetype.web.infra.feign.FeignTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
