@@ -5,7 +5,7 @@ import com.zjl.component.web.support.context.RequestContextFilter;
 import com.zjl.component.web.support.err.handler.GlobalExceptionHandler;
 import com.zjl.component.web.support.err.handler.HttpErrorHandler;
 import com.zjl.component.web.support.log.ReqRespLoggingFilter;
-import com.zjl.component.web.support.log.RestResultWrapper;
+import com.zjl.component.web.support.resp.RestResultWrapper;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
