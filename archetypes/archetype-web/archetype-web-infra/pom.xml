@@ -19,6 +19,11 @@
             <artifactId>component-feign</artifactId>
             <version>${cola.components.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.zjl.component</groupId>
+            <artifactId>component-mybatis-plus</artifactId>
+            <version>${cola.components.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.baomidou</groupId>

@@ -2,12 +2,10 @@ package com.zjl.archetype.web.infra.dao.transaction;
 
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.zjl.archetype.web.infra.dao.MysqlApplicationTest;
-import com.zjl.archetype.web.infra.dao.transaction.TransactionService;
-import com.zjl.archetype.web.infra.dao.transaction.User;
-import com.zjl.archetype.web.infra.dao.transaction.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 
 public class UserDaoTest implements MysqlApplicationTest {
@@ -23,7 +21,10 @@ public class UserDaoTest implements MysqlApplicationTest {
         userList.forEach(System.out::println);
 
         userList.get(0).setId(null);
-        userMapper.insert(userList.get(0));
+        userMapper.batchInsert(Collections.singletonList(userList.get(0)));
+
+        userList = userMapper.selectList(null);
+        System.out.println(userList);
     }
 
 
