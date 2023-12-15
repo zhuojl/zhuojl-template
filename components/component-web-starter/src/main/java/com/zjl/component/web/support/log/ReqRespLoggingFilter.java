@@ -1,5 +1,6 @@
 package com.zjl.component.web.support.log;
 
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
@@ -52,7 +53,7 @@ public class ReqRespLoggingFilter implements Filter {
 
         // XXX 删除requestBody因为，在此提前读取，「在序列化」的时候会报错；在序列化后，可以通过 getContentAsByteArray 获取
         LOGGER.info("common log request, method:{}, uri:{},\t requestParam:{}",
-            requestWrapper.getMethod(), requestWrapper.getRequestURI(), requestWrapper.getParameterMap());
+            requestWrapper.getMethod(), requestWrapper.getRequestURI(), JSONObject.toJSONString(requestWrapper.getParameterMap()));
         long timeMillStart = System.currentTimeMillis();
 
         chain.doFilter(requestWrapper, responseWrapper);
