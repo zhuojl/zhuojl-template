@@ -10,12 +10,12 @@ public class CustomerDO {
     private Long id;
     @TableField("customer_id")
     private String customerId;
+    @TableField("customer_name")
+    private String customerName;
     @TableField("member_id")
     private String memberId;
     @TableField("global_id")
     private String globalId;
     @TableField("registered_capital")
     private long registeredCapital;
-    @TableField("company_name")
-    private String companyName;
 }

@@ -1,4 +1,4 @@
-insert into customer (customer_id, member_id, global_id, company_name, registered_capital)
+insert into customer (customer_id, member_id, global_id, customer_name, registered_capital)
 values ('zjlId', 'zjl', '11', 'my', 1);
 
 

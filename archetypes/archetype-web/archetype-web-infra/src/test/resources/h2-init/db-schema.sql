@@ -4,7 +4,7 @@ create table customer
     customer_id        varchar(20),
     member_id          varchar(20),
     global_id          varchar(20),
-    company_name       varchar(20),
+    customer_name       varchar(50),
     registered_capital bigint,
     PRIMARY KEY (id)
 );

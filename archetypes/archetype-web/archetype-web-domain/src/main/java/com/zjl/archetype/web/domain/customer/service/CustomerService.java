@@ -6,7 +6,7 @@ public interface CustomerService {
     Customer getByCustomerId(String customerId);
     Customer getById(Long id);
 
-    Customer getByCompanyName(String customerName);
+    Customer getByCustomerName(String customerName);
 
     Long addCustomer(Customer customer);
 }

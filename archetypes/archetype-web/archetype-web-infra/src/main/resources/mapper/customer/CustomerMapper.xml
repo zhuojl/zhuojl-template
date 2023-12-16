@@ -4,8 +4,8 @@
 <!--命名空间：找到所在的mapper接口的位置-->
 <mapper namespace="com.zjl.archetype.web.infra.dao.customer.CustomerDao">
     <!--sql语句代码-->
-    <select id="getByCompanyName" resultType="com.zjl.archetype.web.infra.dao.customer.CustomerDO">
-        SELECT * FROM customer WHERE company_name = #{companyName}
+    <select id="getByCustomerName" resultType="com.zjl.archetype.web.infra.dao.customer.CustomerDO">
+        SELECT * FROM customer WHERE customer_name = #{customerName}
     </select>
 
 </mapper>

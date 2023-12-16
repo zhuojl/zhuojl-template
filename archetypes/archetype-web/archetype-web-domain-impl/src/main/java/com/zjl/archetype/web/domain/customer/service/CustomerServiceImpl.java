@@ -29,8 +29,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getByCompanyName(String customerName) {
-        CustomerDO customerDO = customerDao.getByCompanyName(customerName);
+    public Customer getByCustomerName(String customerName) {
+        CustomerDO customerDO = customerDao.getByCustomerName(customerName);
         return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
     }
 

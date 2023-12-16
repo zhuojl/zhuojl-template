@@ -28,7 +28,7 @@ public class CustomerBizServiceImpl implements CustomerBizService {
     @Transactional
     public Response<Long> addCustomer(CustomerAddCmd cmd) {
         CustomerValidator.validate(cmd.getCustomer());
-        Customer customer = customerService.getByCompanyName(cmd.getCustomer().getCustomerName());
+        Customer customer = customerService.getByCustomerName(cmd.getCustomer().getCustomerName());
         if (Objects.nonNull(customer)) {
             throw ExceptionFactory.badRequestException(BizErrorEnum.COMPANY_NAME_REPEAT);
         }

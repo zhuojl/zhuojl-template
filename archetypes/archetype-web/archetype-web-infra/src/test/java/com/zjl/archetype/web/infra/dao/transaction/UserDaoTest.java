@@ -31,7 +31,7 @@ public class UserDaoTest implements MysqlApplicationTest {
     @Autowired
     private TransactionService transactionService;
     @Test
-    public void testGetByCompanyName() {
+    public void testGetByCustomerName() {
         transactionService.test();
 
         System.out.println(("----- selectAll method test ------"));

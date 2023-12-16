@@ -23,8 +23,8 @@ public class CustomerDaoTest implements MysqlApplicationTest{
     }
 
     @Test
-    public void testGetByCompanyName() {
-        CustomerDO zjlUser = customerDao.getByCompanyName("my");
+    public void testGetByCustomerName() {
+        CustomerDO zjlUser = customerDao.getByCustomerName("my");
         System.out.println(zjlUser);
     }
 
@@ -36,7 +36,7 @@ public class CustomerDaoTest implements MysqlApplicationTest{
         customerDO.setMemberId("xxx");
         customerDO.setGlobalId( "customer.getGd" );
         customerDO.setRegisteredCapital(2L );
-        customerDO.setCompanyName( "customer()" );
+        customerDO.setCustomerName( "customer()" );
 
         customerDao.insert(customerDO);
         CustomerDO customerDO2 = customerDao.getByCustomerId("xxx");
