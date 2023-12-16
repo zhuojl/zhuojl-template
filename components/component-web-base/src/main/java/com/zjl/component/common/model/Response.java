@@ -4,12 +4,14 @@ package com.zjl.component.common.model;
 import com.zjl.component.common.exception.BaseException;
 import com.zjl.component.common.exception.IError;
 import java.io.Serializable;
+import lombok.Data;
 
 /**
  * Response to caller
  *
  * @author fulan.zjf 2017年10月21日 下午8:53:17
  */
+@Data
 public class Response<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +20,7 @@ public class Response<T> implements Serializable {
 
     private T data;
 
-    public static <T> Response success(T t) {
+    public static <T> Response<T> success(T t) {
         Response<T> response = new Response<>();
         response.setData(t);
         return response;
@@ -61,19 +63,4 @@ public class Response<T> implements Serializable {
         return new Response();
     }
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public ErrorInfo getError() {
-        return error;
-    }
-
-    public void setError(ErrorInfo error) {
-        this.error = error;
-    }
 }
