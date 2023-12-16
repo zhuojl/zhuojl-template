@@ -81,12 +81,10 @@
     <dependency>
       <artifactId>spock-core</artifactId>
       <groupId>org.spockframework</groupId>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <artifactId>spock-junit4</artifactId>
       <groupId>org.spockframework</groupId>
-      <scope>test</scope>
     </dependency>
 
     <dependency>

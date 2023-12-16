@@ -269,13 +269,11 @@
       <dependency>
         <artifactId>spock-core</artifactId>
         <groupId>org.spockframework</groupId>
-        <scope>test</scope>
         <version>${spock.version}</version>
       </dependency>
       <dependency>
         <artifactId>spock-junit4</artifactId>
         <groupId>org.spockframework</groupId>
-        <scope>test</scope>
         <version>${spock.version}</version>
       </dependency>
 
