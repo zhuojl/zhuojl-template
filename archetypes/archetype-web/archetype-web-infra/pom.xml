@@ -72,7 +72,8 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+
+        <!-- 本地测试方便   <scope>test</scope>-->
         </dependency>
 
 
