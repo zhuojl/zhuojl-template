@@ -29,7 +29,7 @@ public class CustomerBizServiceImpl implements CustomerBizService {
         CustomerValidator.validate(cmd.getCustomer());
         Customer customer = customerService.getByCustomerName(cmd.getCustomer().getCustomerName());
         if (Objects.nonNull(customer)) {
-            throw ExceptionFactory.badRequestException(BizErrorEnum.COMPANY_NAME_REPEAT);
+            throw ExceptionFactory.badRequestException(BizErrorEnum.CUSTOMER_NAME_REPEAT);
         }
         Customer save = CustomerBizMapper.INSTANCE.toCustomer(cmd.getCustomer());
         Long result = customerService.addCustomer(save);

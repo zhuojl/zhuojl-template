@@ -7,7 +7,7 @@ import com.zjl.component.common.exception.IError;
  */
 public enum BizErrorEnum implements IError {
 
-    COMPANY_NAME_REPEAT("CUSTOMER.COMPANY_NAME_REPEAT", "公司名冲突");
+    CUSTOMER_NAME_REPEAT("CUSTOMER.CUSTOMER_NAME_REPEAT", "会员名冲突");
 
     String errorCode;
     String errorMsg;
