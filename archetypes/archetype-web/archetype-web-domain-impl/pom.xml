@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>archetype-web</artifactId>
-        <groupId>com.zjl.archetype</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>archetype-web-domain-impl</artifactId>
+  <dependencies>
 
-    <artifactId>archetype-web-domain-impl</artifactId>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
-    <dependencies>
-
-        <dependency>
-            <groupId>com.zjl.archetype</groupId>
-            <artifactId>archetype-web-domain</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zjl.archetype</groupId>
-            <artifactId>archetype-web-infra</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>archetype-web-domain</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>archetype-web-infra</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
 
 
-    </dependencies>
+  </dependencies>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>archetype-web</artifactId>
+    <groupId>com.zjl.archetype</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+  </properties>
 
 </project>

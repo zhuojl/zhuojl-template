@@ -1,13 +1,11 @@
 package com.zjl.component.secure.secure;
 
+import com.zjl.component.secure.common.SecureType;
+import com.zjl.component.secure.exception.CodeException;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-
-import com.zjl.component.secure.common.SecureType;
-import com.zjl.component.secure.exception.CodeException;
 
 /**
  * 3DES
@@ -16,6 +14,7 @@ import com.zjl.component.secure.exception.CodeException;
  * @create 2018-08-07 19:47
  **/
 public class DES3Secure extends BaseSecure {
+
     /**
      * 当为密钥生产者（甲方）调用该构造方法
      *

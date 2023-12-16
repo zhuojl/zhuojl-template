@@ -1,7 +1,6 @@
 package com.zjl.component.common.exception;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 @AllArgsConstructor
 public enum CommonErrorEnum implements IError {

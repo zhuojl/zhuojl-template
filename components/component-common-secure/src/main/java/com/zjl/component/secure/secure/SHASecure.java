@@ -1,8 +1,7 @@
 package com.zjl.component.secure.secure;
 
-import java.security.MessageDigest;
-
 import com.zjl.component.secure.common.SecureType;
+import java.security.MessageDigest;
 
 /**
  * SHA 单向加密

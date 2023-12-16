@@ -3,10 +3,9 @@ package com.zjl.archetype.web.infra.client;
 import com.zjl.archetype.web.infra.client.dto.UserDto;
 import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import com.zjl.archetype.web.infra.feign.FeignTest;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
 
 /**
  * 三方系统请求

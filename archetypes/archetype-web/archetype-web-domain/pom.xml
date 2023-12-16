@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.zjl.archetype</groupId>
-        <artifactId>archetype-web</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <artifactId>archetype-web-domain</artifactId>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
-    <artifactId>archetype-web-domain</artifactId>
-    <packaging>jar</packaging>
-    <name>archetype-web-domain</name>
+  <dependencies>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+    </dependency>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+    <!-- COLA components -->
+    <dependency>
+      <artifactId>component-common</artifactId>
+      <groupId>com.zjl.component</groupId>
+    </dependency>
+    <!-- COLA components end -->
 
-        <!-- COLA components -->
-        <dependency>
-            <groupId>com.zjl.component</groupId>
-            <artifactId>component-common</artifactId>
-        </dependency>
-        <!-- COLA components end -->
+  </dependencies>
+  <modelVersion>4.0.0</modelVersion>
+  <name>archetype-web-domain</name>
 
-    </dependencies>
+  <packaging>jar</packaging>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+  <parent>
+    <artifactId>archetype-web</artifactId>
+    <groupId>com.zjl.archetype</groupId>
+    <relativePath>../pom.xml</relativePath>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
 </project>

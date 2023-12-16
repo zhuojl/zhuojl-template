@@ -2,22 +2,8 @@ package com.zjl.component.web.support.sign;
 
 import com.zjl.component.common.exception.CommonErrorEnum;
 import com.zjl.component.common.exception.ExceptionFactory;
-import com.zjl.component.common.exception.SysException;
 import com.zjl.component.secure.sign.Md5Signer;
 import com.zjl.component.secure.sign.RequestSignEntity;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
-import org.springframework.util.StreamUtils;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -25,6 +11,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
+import org.springframework.util.StreamUtils;
 
 /**
  * 验签
@@ -35,16 +32,14 @@ import java.util.Objects;
 public class Md5SignValidateFilter implements SignValidateFilter {
 
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
-
+    private Md5Signer md5Signer = new Md5Signer("test");
 
     public Md5SignValidateFilter() {
     }
 
-    private Md5Signer md5Signer = new Md5Signer("test");
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
 
         signValidate(request);
 
@@ -65,7 +60,8 @@ public class Md5SignValidateFilter implements SignValidateFilter {
         }
     }
 
-    private RequestSignEntity buildSignRequest(HttpServletRequest httpServletRequest) throws IOException {
+    private RequestSignEntity buildSignRequest(HttpServletRequest httpServletRequest)
+            throws IOException {
         RequestSignEntity requestSignEntity = new RequestSignEntity();
         Map<String, String> queryMap = getQueryMap(httpServletRequest.getParameterMap());
         requestSignEntity.setPath(httpServletRequest.getRequestURI());
@@ -76,7 +72,8 @@ public class Md5SignValidateFilter implements SignValidateFilter {
             requestSignEntity.setBody("");
         } else {
             requestSignEntity.setBody(
-                StreamUtils.copyToString(httpServletRequest.getInputStream(), StandardCharsets.UTF_8));
+                    StreamUtils.copyToString(httpServletRequest.getInputStream(),
+                            StandardCharsets.UTF_8));
         }
         return requestSignEntity;
     }
@@ -94,7 +91,8 @@ public class Md5SignValidateFilter implements SignValidateFilter {
                 String value = "";
                 if (Objects.nonNull(entry.getValue()) && entry.getValue().length != 0) {
                     try {
-                        value = URLDecoder.decode(entry.getValue()[0], StandardCharsets.UTF_8.name());
+                        value = URLDecoder.decode(entry.getValue()[0],
+                                StandardCharsets.UTF_8.name());
                     } catch (UnsupportedEncodingException e) {
                         throw ExceptionFactory.sysException(CommonErrorEnum.INNER_ERROR);
                     }
@@ -113,8 +111,8 @@ public class Md5SignValidateFilter implements SignValidateFilter {
     private boolean isFormPost(HttpServletRequest httpServletRequest) {
 
         return Objects.nonNull(httpServletRequest.getContentType())
-            && httpServletRequest.getContentType().contains(FORM_CONTENT_TYPE) &&
-            HttpMethod.POST.matches(httpServletRequest.getMethod());
+                && httpServletRequest.getContentType().contains(FORM_CONTENT_TYPE) &&
+                HttpMethod.POST.matches(httpServletRequest.getMethod());
     }
 }
 

@@ -6,12 +6,10 @@ package com.zjl.component.common.model;
  * @author jacky
  */
 public abstract class PageQuery extends DTO {
-    private static final long serialVersionUID = 1L;
 
     public static final String ASC = "ASC";
-
     public static final String DESC = "DESC";
-
+    private static final long serialVersionUID = 1L;
     private static final int DEFAULT_PAGE_SIZE = 10;
 
     private int pageSize = DEFAULT_PAGE_SIZE;

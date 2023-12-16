@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 //@RunWith(MockitoJUnitRunner.class) // junit 4
 @ExtendWith(MockitoExtension.class)
 class UserClientByMockTest {
+
     @InjectMocks
     private UserClient userClient;
     @Mock

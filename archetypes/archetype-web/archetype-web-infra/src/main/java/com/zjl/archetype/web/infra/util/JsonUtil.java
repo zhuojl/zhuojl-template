@@ -1,10 +1,9 @@
 package com.zjl.archetype.web.infra.util;
 
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.core.io.ClassPathResource;
-
 import java.io.IOException;
 import java.io.InputStream;
+import org.springframework.core.io.ClassPathResource;
 
 public class JsonUtil {
 

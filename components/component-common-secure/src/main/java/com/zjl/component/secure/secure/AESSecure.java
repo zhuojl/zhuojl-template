@@ -1,11 +1,9 @@
 package com.zjl.component.secure.secure;
 
+import com.zjl.component.secure.common.SecureType;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-
-import com.zjl.component.secure.common.SecureType;
 
 public class AESSecure extends BaseSecure {
 
@@ -25,7 +23,8 @@ public class AESSecure extends BaseSecure {
             throw new Exception("scretKey need to exists");
         }
 
-        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), SecureType.AES.getType());
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(),
+                SecureType.AES.getType());
         Cipher cipher = Cipher.getInstance(SecureType.AES.getType());
         cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
         return cipher.doFinal(data);
@@ -37,7 +36,8 @@ public class AESSecure extends BaseSecure {
             throw new Exception("scretKey need to exists");
         }
 
-        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), SecureType.AES.getType());
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(),
+                SecureType.AES.getType());
         Cipher cipher = Cipher.getInstance(SecureType.AES.getType());
         cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
         return cipher.doFinal(data);

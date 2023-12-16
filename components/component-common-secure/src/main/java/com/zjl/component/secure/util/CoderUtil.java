@@ -1,7 +1,6 @@
 package com.zjl.component.secure.util;
 
 import java.io.IOException;
-
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 

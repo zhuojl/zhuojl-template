@@ -1,10 +1,4 @@
 <code_scheme name="GoogleStyle" version="173">
-  <option name="OTHER_INDENT_OPTIONS">
-    <value>
-      <option name="CONTINUATION_INDENT_SIZE" value="4"/>
-    </value>
-  </option>
-  <option name="RIGHT_MARGIN" value="100"/>
   <AndroidXmlCodeStyleSettings>
     <option name="USE_CUSTOM_SETTINGS" value="true"/>
     <option name="LAYOUT_SETTINGS">
@@ -25,9 +19,9 @@
     </option>
     <option name="IMPORT_LAYOUT_TABLE">
       <value>
-        <package name="" withSubpackages="true" static="true"/>
         <emptyLine/>
-        <package name="" withSubpackages="true" static="false"/>
+        <package name="" static="true" withSubpackages="true"/>
+        <package name="" static="false" withSubpackages="true"/>
       </value>
     </option>
   </JavaCodeStyleSettings>
@@ -49,9 +43,18 @@
     <option name="SPACE_BEFORE_SUPERCLASS_COLON" value="false"/>
   </Objective-C>
   <Objective-C-extensions>
-    <option name="GENERATE_INSTANCE_VARIABLES_FOR_PROPERTIES" value="ASK"/>
-    <option name="RELEASE_STYLE" value="IVAR"/>
-    <option name="TYPE_QUALIFIERS_PLACEMENT" value="BEFORE"/>
+    <class>
+      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Property"/>
+      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Synthesize"/>
+      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InitMethod"/>
+      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="StaticMethod"/>
+      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InstanceMethod"/>
+      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="DeallocMethod"/>
+    </class>
+    <extensions>
+      <pair header="h" source="cc"/>
+      <pair header="h" source="c"/>
+    </extensions>
     <file>
       <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Import"/>
       <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Macro"/>
@@ -63,18 +66,9 @@
       <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="FunctionPredecl"/>
       <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Function"/>
     </file>
-    <class>
-      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Property"/>
-      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="Synthesize"/>
-      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InitMethod"/>
-      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="StaticMethod"/>
-      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="InstanceMethod"/>
-      <option name="com.jetbrains.cidr.lang.util.OCDeclarationKind" value="DeallocMethod"/>
-    </class>
-    <extensions>
-      <pair source="cc" header="h"/>
-      <pair source="c" header="h"/>
-    </extensions>
+    <option name="GENERATE_INSTANCE_VARIABLES_FOR_PROPERTIES" value="ASK"/>
+    <option name="RELEASE_STYLE" value="IVAR"/>
+    <option name="TYPE_QUALIFIERS_PLACEMENT" value="BEFORE"/>
   </Objective-C-extensions>
   <Python>
     <option name="USE_CONTINUATION_INDENT_FOR_ARGUMENTS" value="true"/>
@@ -119,6 +113,9 @@
     </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="JAVA">
+    <indentOptions>
+      <option name="CONTINUATION_INDENT_SIZE" value="4"/>
+    </indentOptions>
     <option name="KEEP_CONTROL_STATEMENT_IN_ONE_LINE" value="false"/>
     <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
     <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1"/>
@@ -141,9 +138,6 @@
     <option name="DOWHILE_BRACE_FORCE" value="3"/>
     <option name="WHILE_BRACE_FORCE" value="3"/>
     <option name="FOR_BRACE_FORCE" value="3"/>
-    <indentOptions>
-      <option name="CONTINUATION_INDENT_SIZE" value="4"/>
-    </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="JSON">
     <indentOptions>
@@ -152,6 +146,10 @@
     </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="JavaScript">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2"/>
+      <option name="TAB_SIZE" value="2"/>
+    </indentOptions>
     <option name="RIGHT_MARGIN" value="80"/>
     <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
     <option name="ALIGN_MULTILINE_PARAMETERS" value="false"/>
@@ -168,12 +166,12 @@
     <option name="DOWHILE_BRACE_FORCE" value="3"/>
     <option name="WHILE_BRACE_FORCE" value="3"/>
     <option name="FOR_BRACE_FORCE" value="3"/>
-    <indentOptions>
-      <option name="INDENT_SIZE" value="2"/>
-      <option name="TAB_SIZE" value="2"/>
-    </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="ObjectiveC">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2"/>
+      <option name="CONTINUATION_INDENT_SIZE" value="4"/>
+    </indentOptions>
     <option name="RIGHT_MARGIN" value="80"/>
     <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1"/>
     <option name="BLANK_LINES_BEFORE_IMPORTS" value="0"/>
@@ -185,29 +183,25 @@
     <option name="BINARY_OPERATION_SIGN_ON_NEXT_LINE" value="true"/>
     <option name="FOR_STATEMENT_WRAP" value="1"/>
     <option name="ASSIGNMENT_WRAP" value="1"/>
-    <indentOptions>
-      <option name="INDENT_SIZE" value="2"/>
-      <option name="CONTINUATION_INDENT_SIZE" value="4"/>
-    </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="PROTO">
-    <option name="RIGHT_MARGIN" value="80"/>
     <indentOptions>
       <option name="INDENT_SIZE" value="2"/>
       <option name="CONTINUATION_INDENT_SIZE" value="2"/>
       <option name="TAB_SIZE" value="2"/>
     </indentOptions>
+    <option name="RIGHT_MARGIN" value="80"/>
   </codeStyleSettings>
   <codeStyleSettings language="Python">
-    <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
-    <option name="RIGHT_MARGIN" value="80"/>
-    <option name="ALIGN_MULTILINE_PARAMETERS" value="false"/>
-    <option name="PARENT_SETTINGS_INSTALLED" value="true"/>
     <indentOptions>
       <option name="INDENT_SIZE" value="2"/>
       <option name="CONTINUATION_INDENT_SIZE" value="4"/>
       <option name="TAB_SIZE" value="2"/>
     </indentOptions>
+    <option name="RIGHT_MARGIN" value="80"/>
+    <option name="ALIGN_MULTILINE_PARAMETERS" value="false"/>
+    <option name="PARENT_SETTINGS_INSTALLED" value="true"/>
+    <option name="KEEP_BLANK_LINES_IN_CODE" value="1"/>
   </codeStyleSettings>
   <codeStyleSettings language="SASS">
     <indentOptions>
@@ -228,11 +222,6 @@
     </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="XML">
-    <indentOptions>
-      <option name="INDENT_SIZE" value="2"/>
-      <option name="CONTINUATION_INDENT_SIZE" value="2"/>
-      <option name="TAB_SIZE" value="2"/>
-    </indentOptions>
     <arrangement>
       <rules>
         <section>
@@ -549,13 +538,24 @@
         </section>
       </rules>
     </arrangement>
-  </codeStyleSettings>
-  <codeStyleSettings language="protobuf">
-    <option name="RIGHT_MARGIN" value="80"/>
     <indentOptions>
       <option name="INDENT_SIZE" value="2"/>
       <option name="CONTINUATION_INDENT_SIZE" value="2"/>
       <option name="TAB_SIZE" value="2"/>
     </indentOptions>
   </codeStyleSettings>
+  <codeStyleSettings language="protobuf">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2"/>
+      <option name="CONTINUATION_INDENT_SIZE" value="2"/>
+      <option name="TAB_SIZE" value="2"/>
+    </indentOptions>
+    <option name="RIGHT_MARGIN" value="80"/>
+  </codeStyleSettings>
+  <option name="OTHER_INDENT_OPTIONS">
+    <value>
+      <option name="CONTINUATION_INDENT_SIZE" value="4"/>
+    </value>
+  </option>
+  <option name="RIGHT_MARGIN" value="100"/>
 </code_scheme>

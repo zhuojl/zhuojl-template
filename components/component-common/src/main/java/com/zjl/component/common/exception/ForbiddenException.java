@@ -2,7 +2,6 @@ package com.zjl.component.common.exception;
 
 /**
  * 未授权异常（无资源权限）
- *
  */
 public class ForbiddenException extends BaseException {
 

@@ -1,10 +1,7 @@
 package com.zjl.component.common.exception;
 
 /**
- * 客户端参数，流程等引起的通用错误
- * BizException is known Exception, no need retry
- * 状态 400
- *
+ * 客户端参数，流程等引起的通用错误 BizException is known Exception, no need retry 状态 400
  */
 public class BizException extends BaseException {
 

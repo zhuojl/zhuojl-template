@@ -1,9 +1,5 @@
 package com.zjl.archetype.web.biz.customer.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
 import com.zjl.archetype.web.biz.customer.dto.CustomerListByNameQry;
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
@@ -14,6 +10,9 @@ import com.zjl.archetype.web.domain.customer.service.CustomerService;
 import com.zjl.archetype.web.infra.exception.BizErrorEnum;
 import com.zjl.component.common.exception.ExceptionFactory;
 import com.zjl.component.common.model.Response;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

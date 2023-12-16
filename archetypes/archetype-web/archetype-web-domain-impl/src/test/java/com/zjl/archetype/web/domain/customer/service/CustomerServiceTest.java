@@ -5,6 +5,7 @@ import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import com.zjl.archetype.web.infra.dao.customer.CustomerDao;
 import com.zjl.archetype.web.infra.event.EventPublisher;
 import com.zjl.archetype.web.infra.util.JsonUtil;
+import java.io.IOException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,11 +15,10 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
-
 //@RunWith(MockitoJUnitRunner.class) // junit 4
 @ExtendWith(MockitoExtension.class)
 public class CustomerServiceTest {
+
     @InjectMocks
     private CustomerServiceImpl customerService;
     @Spy
@@ -28,7 +28,8 @@ public class CustomerServiceTest {
 
     @Test
     public void testGetByById() throws IOException {
-        CustomerDO customerDO = JsonUtil.parseJsonFromClassPathFile("test/domain/customer/CustomerDO.json", CustomerDO.class);
+        CustomerDO customerDO = JsonUtil.parseJsonFromClassPathFile(
+                "test/domain/customer/CustomerDO.json", CustomerDO.class);
         Mockito.when(customerDao.getByCustomerId("test")).thenReturn(customerDO);
         Customer customer = customerService.getByCustomerId("test");
         Assert.assertNotNull(customer);

@@ -1,10 +1,8 @@
 package com.zjl.archetype.web.infra.feign;
 
-import java.util.Map;
-
-import com.zjl.component.feign.FeignConfiguration;
-
 import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
+import com.zjl.component.feign.FeignConfiguration;
+import java.util.Map;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.http.MediaType;
@@ -28,7 +26,7 @@ public interface FeignTest {
     String test22(String param);
 
     /**
-     *  form 表单的场景 特殊处理，因为tomcat对form表单有特殊处理，不能用@RequestBody注解（接收参数也不能用这个注解）
+     * form 表单的场景 特殊处理，因为tomcat对form表单有特殊处理，不能用@RequestBody注解（接收参数也不能用这个注解）
      */
     @PostMapping(value = "internal/testFeign2?zjl=new")
     CustomerDO test3(@SpringQueryMap CustomerDO customerDO);

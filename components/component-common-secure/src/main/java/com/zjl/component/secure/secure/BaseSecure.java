@@ -1,9 +1,8 @@
 package com.zjl.component.secure.secure;
 
-import java.util.regex.Pattern;
-
 import com.zjl.component.secure.common.EncType;
 import com.zjl.component.secure.util.CoderUtil;
+import java.util.regex.Pattern;
 
 /**
  * 编解码基类
@@ -13,10 +12,9 @@ public abstract class BaseSecure {
     public static final String DEFAULT_CHARSET = "UTF-8";
 
     protected String secretKey;
+    Pattern pattern = Pattern.compile("\\s*|\t|\r|\n"); //去掉空格、换行
     private EncType keyEncType;//密钥编码
     private EncType contentEncType;//内容编码
-
-    Pattern pattern = Pattern.compile("\\s*|\t|\r|\n"); //去掉空格、换行
 
     public BaseSecure() {
     }
@@ -41,42 +39,42 @@ public abstract class BaseSecure {
 
     public String encode(byte[] data, EncType encType) {
         String d;
-        if(encType==null){
+        if (encType == null) {
             return new String(data);
         }
         switch (encType) {
             case HEX:
-                d= encodeByteToHex(data);
+                d = encodeByteToHex(data);
                 break;
             case BASE64:
-                d= CoderUtil.encodeBase64(data);
+                d = CoderUtil.encodeBase64(data);
                 break;
             case DEFAULT:
-                d=new String(data);
+                d = new String(data);
                 break;
             default:
-                d=new String(data);
+                d = new String(data);
         }
         return pattern.matcher(d).replaceAll("");
     }
 
     public byte[] decode(String data, EncType encType) throws Exception {
         byte[] d;
-        if(encType==null){
+        if (encType == null) {
             return data.getBytes();
         }
         switch (encType) {
             case HEX:
-                d= decodeHex2Byte(new String(data));
+                d = decodeHex2Byte(new String(data));
                 break;
             case BASE64:
-                d= CoderUtil.decodeBase64(data);
+                d = CoderUtil.decodeBase64(data);
                 break;
             case DEFAULT:
-                d=data.getBytes();
+                d = data.getBytes();
                 break;
             default:
-                d=data.getBytes();
+                d = data.getBytes();
         }
         return d;
     }
@@ -126,39 +124,40 @@ public abstract class BaseSecure {
 
         return data;
     }
-    public String getEncrypt(byte[] data, EncType encType){
+
+    public String getEncrypt(byte[] data, EncType encType) {
         String str;
         switch (encType) {
             case HEX:
-                str= getEncrypt2Hex(data);
+                str = getEncrypt2Hex(data);
                 break;
             case BASE64:
-                str= getEncrypt2Base64(data);
+                str = getEncrypt2Base64(data);
                 break;
             case DEFAULT:
-                str=new String(data);
+                str = new String(data);
                 break;
             default:
-                str=new String(data);
+                str = new String(data);
         }
 
         return pattern.matcher(str).replaceAll("");
     }
 
-    public String getDecrypt(byte[] data, EncType encType){
+    public String getDecrypt(byte[] data, EncType encType) {
         String str;
         switch (encType) {
             case HEX:
-                str= getDecrypt2Hex(data);
+                str = getDecrypt2Hex(data);
                 break;
             case BASE64:
-                str= getDecrypt2Base64(data);
+                str = getDecrypt2Base64(data);
                 break;
             case DEFAULT:
-                str=new String(data);
+                str = new String(data);
                 break;
             default:
-                str=new String(data);
+                str = new String(data);
         }
         return pattern.matcher(str).replaceAll("");
     }

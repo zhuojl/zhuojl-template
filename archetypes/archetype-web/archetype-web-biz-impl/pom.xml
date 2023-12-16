@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>archetype-web</artifactId>
-        <groupId>com.zjl.archetype</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>archetype-web-biz-impl</artifactId>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
-    <artifactId>archetype-web-biz-impl</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>archetype-web-biz</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>archetype-web-domain</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>archetype-web-infra</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
+
+    <!-- JSR 303 Validation -->
+    <dependency>
+      <artifactId>hibernate-validator</artifactId>
+      <groupId>org.hibernate.validator</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>javax.el-api</artifactId>
+      <groupId>javax.el</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>javax.el</artifactId>
+      <groupId>org.glassfish.web</groupId>
+    </dependency>
+    <!-- JSR 303 Validation End-->
+
+    <dependency>
+      <artifactId>mapstruct</artifactId>
+      <groupId>org.mapstruct</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>com.zjl.archetype</groupId>
-            <artifactId>archetype-web-biz</artifactId>
-        </dependency>
+  <modelVersion>4.0.0</modelVersion>
 
-        <dependency>
-            <groupId>com.zjl.archetype</groupId>
-            <artifactId>archetype-web-domain</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.zjl.archetype</groupId>
-            <artifactId>archetype-web-infra</artifactId>
-        </dependency>
-
-        <!-- JSR 303 Validation -->
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.el</artifactId>
-        </dependency>
-        <!-- JSR 303 Validation End-->
-
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-    </dependencies>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+  <parent>
+    <artifactId>archetype-web</artifactId>
+    <groupId>com.zjl.archetype</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
 </project>

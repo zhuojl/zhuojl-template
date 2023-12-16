@@ -22,7 +22,8 @@ public class FeignConfiguration {
 
     @Bean
     public Decoder feignDecoder(ObjectFactory<HttpMessageConverters> messageConverters) {
-        return new ResponseEntityDecoder(new FeignDecoder<>(Response.class, new SpringDecoder(messageConverters)));
+        return new ResponseEntityDecoder(
+                new FeignDecoder<>(Response.class, new SpringDecoder(messageConverters)));
     }
 
     @Bean
@@ -36,6 +37,7 @@ public class FeignConfiguration {
     public FeignLoggerFactory feignLoggerFactory() {
         return new CustomFeignLoggerFactory();
     }
+
     @Bean
     @ConditionalOnMissingBean(ContextInterceptor.class)
     public ContextInterceptor contextInterceptor() {

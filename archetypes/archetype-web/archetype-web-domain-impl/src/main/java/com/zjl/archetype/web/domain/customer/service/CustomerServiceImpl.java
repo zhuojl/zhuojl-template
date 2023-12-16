@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class CustomerServiceImpl implements CustomerService {
+
     @Autowired
     private CustomerDao customerDao;
     @Autowired
@@ -18,12 +19,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     public Customer getByCustomerId(String customerId) {
         CustomerDO customerDO = customerDao.getByCustomerId(customerId);
-        //Convert to Customer
-        return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
-    }
-
-    public Customer getById(Long id) {
-        CustomerDO customerDO = customerDao.selectById(id);
         //Convert to Customer
         return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
     }

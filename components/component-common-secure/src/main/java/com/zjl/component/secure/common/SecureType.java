@@ -1,4 +1,5 @@
 package com.zjl.component.secure.common;
+
 /**
  * Created by chenerzhu on 2018/8/2.
  */
@@ -13,7 +14,17 @@ public enum SecureType {
     SHA("SHA"),
     HmacSHA256("HmacSHA256");
 
-    public enum SignAlgorithm{
+    private String type;
+
+    SecureType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public enum SignAlgorithm {
         MD5withRSA("MD5withRSA"),
         SHA1WithRSA("SHA1WithRSA"),
         SHA224WithRSA("SHA224WithRSA"),
@@ -22,22 +33,12 @@ public enum SecureType {
         SHA512WithRSA("SHA512WithRSA");
         private String type;
 
-        SignAlgorithm(String type){
+        SignAlgorithm(String type) {
             this.type = type;
         }
 
-        public String getType(){
+        public String getType() {
             return type;
         }
-    }
-
-    private String type;
-
-    SecureType(String type){
-        this.type = type;
-    }
-
-    public String getType(){
-        return type;
     }
 }

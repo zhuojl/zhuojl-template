@@ -1,23 +1,19 @@
 package com.zjl.component.common.exception;
 
-import java.util.Collection;
-import java.util.Map;
-
 /**
  * Assertion utility class that assists in validating arguments.
  *
  * <p>Useful for identifying programmer errors early and clearly at runtime.
  *
  * <p>For example, if the contract of a public method states it does not
- * allow {@code null} arguments, {@code Assert} can be used to validate that
- * contract.
- *
+ * allow {@code null} arguments, {@code Assert} can be used to validate that contract.
+ * <p>
  * For example:
  *
  * <pre class="code">
  * Assert.notNull(clazz, "The class must not be null");
  * Assert.isTrue(i > 0, "The value must be greater than zero");</pre>
- *
+ * <p>
  * This class is empowered by  {@link org.springframework.util.Assert}
  *
  * @author Frank Zhang

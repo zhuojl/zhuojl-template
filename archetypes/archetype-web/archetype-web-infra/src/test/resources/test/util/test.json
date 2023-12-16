@@ -1,7 +1,7 @@
 {
-    "customerId": "zjlId",
-    "memberId": "memberId",
-    "globalId": "globalId",
-    "registeredCapital": 0,
-    "customerName": "customerName"
+  "customerId": "zjlId",
+  "memberId": "memberId",
+  "globalId": "globalId",
+  "registeredCapital": 0,
+  "customerName": "customerName"
 }

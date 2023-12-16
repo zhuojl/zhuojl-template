@@ -1,14 +1,12 @@
 package com.zjl.component.secure.secure;
 
+import com.zjl.component.secure.common.SecureType;
+import com.zjl.component.secure.exception.CodeException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
-
-import com.zjl.component.secure.common.SecureType;
-import com.zjl.component.secure.exception.CodeException;
 
 /**
  * DES 对称加密类
@@ -65,12 +63,12 @@ public class DESSecure extends BaseSecure {
      * @param strKey
      */
     public Key generateKey(String strKey) throws Exception {
-        try{
-            DESKeySpec desKeySpec = new DESKeySpec(decode(strKey,getKeyEncType()));
+        try {
+            DESKeySpec desKeySpec = new DESKeySpec(decode(strKey, getKeyEncType()));
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(SecureType.DES.getType());
             return keyFactory.generateSecret(desKeySpec);
-        }catch(Exception e){
-            throw new CodeException("generateKey exception",e);
+        } catch (Exception e) {
+            throw new CodeException("generateKey exception", e);
         }
 
     }

@@ -2,16 +2,17 @@ package com.zjl.archetype.web.infra.dao.transaction;
 
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.zjl.archetype.web.infra.dao.MysqlApplicationTest;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Collections;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserDaoTest implements MysqlApplicationTest {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private TransactionService transactionService;
 
     @Test
     public void testSelect() {
@@ -27,9 +28,6 @@ public class UserDaoTest implements MysqlApplicationTest {
         System.out.println(userList);
     }
 
-
-    @Autowired
-    private TransactionService transactionService;
     @Test
     public void testGetByCustomerName() {
         transactionService.test();

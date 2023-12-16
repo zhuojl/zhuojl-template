@@ -2,24 +2,24 @@ package com.zjl.component.secure.exception;
 
 public class CodeException extends Exception {
 
-	private static final long serialVersionUID = -5057120918998520756L;
+    private static final long serialVersionUID = -5057120918998520756L;
 
-	public CodeException() {
-		super();
-	}
+    public CodeException() {
+        super();
+    }
 
-	public CodeException(String message, Throwable cause) {
-		super(message, cause);
+    public CodeException(String message, Throwable cause) {
+        super(message, cause);
 
-	}
+    }
 
-	public CodeException(String message) {
-		super(message);
+    public CodeException(String message) {
+        super(message);
 
-	}
+    }
 
-	public CodeException(Throwable cause) {
-		super(cause);
-	}
+    public CodeException(Throwable cause) {
+        super(cause);
+    }
 
 }

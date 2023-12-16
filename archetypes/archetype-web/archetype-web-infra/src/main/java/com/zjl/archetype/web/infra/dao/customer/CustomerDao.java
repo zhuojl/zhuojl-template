@@ -9,5 +9,6 @@ public interface CustomerDao extends BaseMapper<CustomerDO> {
 
     @Select("select * from customer where customer_id = #{customerId}")
     CustomerDO getByCustomerId(String customerId);
+
     CustomerDO getByCustomerName(String customerName);
 }

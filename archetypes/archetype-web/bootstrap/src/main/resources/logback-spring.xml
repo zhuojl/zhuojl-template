@@ -1,49 +1,49 @@
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender"
+    name="APPLICATION">
+    <!--定义日志输出的路径-->
+    <encoder>
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+    </encoder>
+    <file>${LOG_FILE}</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>50MB</maxFileSize>
+      <maxHistory>7</maxHistory>
+      <totalSizeCap>20GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
 
-    <!--定义参数,后面可以通过${APP_NAME}使用-->
-    <property name="APP_NAME" value="start"/>
-    <property name="LOG_PATH" value="${user.home}/${APP_NAME}/logs"/>
-    <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
+  <!--定义参数,后面可以通过${APP_NAME}使用-->
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="CONSOLE">
+    <encoder>
+      <charset>utf8</charset>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <logger level="DEBUG" name="com.zhuojl.goods"/>
 
-    <appender name="APPLICATION"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--定义日志输出的路径-->
-        <file>${LOG_FILE}</file>
-        <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <maxHistory>7</maxHistory>
-            <maxFileSize>50MB</maxFileSize>
-            <totalSizeCap>20GB</totalSizeCap>
-        </rollingPolicy>
-    </appender>
+  <logger additivity="false" level="TRACE" name="com.apache.ibatis">
+    <appender-ref ref="CONSOLE"/>
+  </logger>
 
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
-            <charset>utf8</charset>
-        </encoder>
-    </appender>
+  <property name="LOG_PATH" value="${user.home}/${APP_NAME}/logs"/>
 
-    <!--rootLogger是默认的logger-->
-    <root level="INFO">
-        <!--定义了两个appender，日志会通过往这两个appender里面写-->
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="APPLICATION"/>
-    </root>
+  <!--rootLogger是默认的logger-->
+  <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
 
-    <!--应用日志-->
-    <!--这个logger没有指定appender，它会继承root节点中定义的那些appender-->
-    <logger name="com.zhuojl.goods" level="DEBUG"/>
+  <!--应用日志-->
+  <!--这个logger没有指定appender，它会继承root节点中定义的那些appender-->
+  <property name="APP_NAME" value="start"/>
 
-    <!--数据库日志-->
-    <!--由于这个logger自动继承了root的appender，root中已经有stdout的appender了，自己这边又引入了stdout的appender-->
-    <!--如果没有设置 additivity="false" ,就会导致一条日志在控制台输出两次的情况-->
-    <!--additivity表示要不要使用rootLogger配置的appender进行输出-->
-    <logger name="com.apache.ibatis" level="TRACE" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-    </logger>
+  <!--数据库日志-->
+  <!--由于这个logger自动继承了root的appender，root中已经有stdout的appender了，自己这边又引入了stdout的appender-->
+  <!--如果没有设置 additivity="false" ,就会导致一条日志在控制台输出两次的情况-->
+  <!--additivity表示要不要使用rootLogger配置的appender进行输出-->
+  <root level="INFO">
+    <!--定义了两个appender，日志会通过往这两个appender里面写-->
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="APPLICATION"/>
+  </root>
 </configuration>

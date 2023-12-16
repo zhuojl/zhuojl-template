@@ -46,7 +46,8 @@ public class WebAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(HttpErrorHandler.class)
-    public HttpErrorHandler httpErrorHandler(ErrorAttributes errorAttributes, ServerProperties serverProperties) {
+    public HttpErrorHandler httpErrorHandler(ErrorAttributes errorAttributes,
+            ServerProperties serverProperties) {
         return new HttpErrorHandler(errorAttributes, serverProperties);
     }
 

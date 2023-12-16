@@ -1,8 +1,7 @@
 package com.zjl.component.secure.secure;
 
-import java.security.NoSuchAlgorithmException;
-
 import com.zjl.component.secure.common.SecureType;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author chenerzhu
@@ -10,7 +9,7 @@ import com.zjl.component.secure.common.SecureType;
  **/
 public class SecureFactory {
 
-    public static BaseSecure getSecure(SecureType type, String key){
+    public static BaseSecure getSecure(SecureType type, String key) {
         BaseSecure secure = null;
         switch (type) {
             case MD5:

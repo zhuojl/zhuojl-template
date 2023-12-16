@@ -3,7 +3,6 @@ package com.zjl.component.common.model;
 
 import com.zjl.component.common.exception.BaseException;
 import com.zjl.component.common.exception.IError;
-
 import java.io.Serializable;
 
 /**
@@ -42,6 +41,7 @@ public class Response<T> implements Serializable {
         response.setError(errorInfo);
         return response;
     }
+
     public static Response failure(ErrorInfo errorInfo) {
         Response response = new Response();
         response.setError(errorInfo);

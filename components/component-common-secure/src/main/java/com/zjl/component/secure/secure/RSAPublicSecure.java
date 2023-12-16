@@ -1,21 +1,19 @@
 package com.zjl.component.secure.secure;
 
+import com.zjl.component.secure.common.SecureType;
+import com.zjl.component.secure.exception.CodeException;
 import java.io.ByteArrayOutputStream;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
-
 import javax.crypto.Cipher;
-
-import com.zjl.component.secure.common.SecureType;
-import com.zjl.component.secure.exception.CodeException;
 
 /**
  * RSA 非对称加密，持有公钥的乙方
  */
 public class RSAPublicSecure extends BaseSecure {
-    private String publicKey;
+
     /**
      * RSA最大加密明文大小
      */
@@ -24,6 +22,7 @@ public class RSAPublicSecure extends BaseSecure {
      * RSA最大解密密文大小
      */
     private static final int MAX_DECRYPT_BLOCK = 128;
+    private String publicKey;
 
     public RSAPublicSecure(String publicKey) {
         super();
@@ -32,7 +31,7 @@ public class RSAPublicSecure extends BaseSecure {
 
 
     public PublicKey getPublicKey(String publicKey) throws Exception {
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(decode(publicKey,getKeyEncType()));
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(decode(publicKey, getKeyEncType()));
         KeyFactory keyFactory = KeyFactory.getInstance(SecureType.RSA.getType());
         return keyFactory.generatePublic(keySpec);
     }
@@ -43,7 +42,8 @@ public class RSAPublicSecure extends BaseSecure {
         if (publicKey == null || "".equals(publicKey)) {
             throw new CodeException("RSA encrypt publicKey is null");
         }
-        Cipher cipher = Cipher.getInstance(SecureType.RSA.getType());//java默认"RSA"="RSA/ECB/PKCS1Padding"
+        Cipher cipher = Cipher.getInstance(
+                SecureType.RSA.getType());//java默认"RSA"="RSA/ECB/PKCS1Padding"
         cipher.init(Cipher.ENCRYPT_MODE, getPublicKey(publicKey));
         int inputLen = data.length;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -71,7 +71,8 @@ public class RSAPublicSecure extends BaseSecure {
         if (publicKey == null || "".equals(publicKey)) {
             throw new CodeException("RSA encrypt publicKey is null");
         }
-        Cipher cipher = Cipher.getInstance(SecureType.RSA.getType());//java默认"RSA"="RSA/ECB/PKCS1Padding"
+        Cipher cipher = Cipher.getInstance(
+                SecureType.RSA.getType());//java默认"RSA"="RSA/ECB/PKCS1Padding"
         cipher.init(Cipher.DECRYPT_MODE, getPublicKey(publicKey));
         int inputLen = data.length;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -121,7 +122,7 @@ public class RSAPublicSecure extends BaseSecure {
             Signature signature = Signature.getInstance(signAlgorithm.getType());
             signature.initVerify(key);
             signature.update(data);
-            return signature.verify(decode(signData,getContentEncType()));
+            return signature.verify(decode(signData, getContentEncType()));
         } catch (Exception e) {
             e.printStackTrace();
         }

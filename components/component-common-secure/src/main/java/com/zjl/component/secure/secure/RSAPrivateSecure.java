@@ -1,29 +1,28 @@
 package com.zjl.component.secure.secure;
 
+import com.zjl.component.secure.common.SecureType;
+import com.zjl.component.secure.exception.CodeException;
 import java.io.ByteArrayOutputStream;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
-
 import javax.crypto.Cipher;
-
-import com.zjl.component.secure.common.SecureType;
-import com.zjl.component.secure.exception.CodeException;
 
 /**
  * RSA 非对称加密，持有私钥的甲方
  */
 public class RSAPrivateSecure extends BaseSecure {
-    private String privateKey;
+
     /**
      * RSA最大加密明文大小
      */
     private static final int MAX_ENCRYPT_BLOCK = 117;
-     /**
+    /**
      * RSA最大解密密文大小
      */
     private static final int MAX_DECRYPT_BLOCK = 128;
+    private String privateKey;
 
     public RSAPrivateSecure(String privateKey) {
         super();
@@ -115,7 +114,7 @@ public class RSAPrivateSecure extends BaseSecure {
             signature.initSign(key);
             signature.update(data);
             byte[] sign = signature.sign();
-            return encode(sign,getContentEncType());
+            return encode(sign, getContentEncType());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,7 +122,7 @@ public class RSAPrivateSecure extends BaseSecure {
     }
 
     public PrivateKey getPrivateKey(String privateKey) throws Exception {
-        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decode(privateKey,getKeyEncType()));
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(decode(privateKey, getKeyEncType()));
         KeyFactory keyFactory = KeyFactory.getInstance(SecureType.RSA.getType());
         return keyFactory.generatePrivate(keySpec);
     }

@@ -3,10 +3,9 @@ package com.zjl.component.mybatisplus.config;
 import com.baomidou.mybatisplus.core.injector.AbstractMethod;
 import com.baomidou.mybatisplus.core.injector.DefaultSqlInjector;
 import com.baomidou.mybatisplus.core.injector.methods.SelectById;
+import com.zjl.component.mybatisplus.config.methods.BatchInsert;
 import com.zjl.component.mybatisplus.config.methods.DeleteAll;
 import com.zjl.component.mybatisplus.config.methods.MyInsertAll;
-import com.zjl.component.mybatisplus.config.methods.BatchInsert;
-
 import java.util.List;
 
 /**

@@ -1,8 +1,7 @@
 package com.zjl.archetype.web.biz.customer.dto;
 
-import javax.validation.constraints.NotNull;
-
 import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data

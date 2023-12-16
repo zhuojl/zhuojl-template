@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.zjl.component</groupId>
-        <artifactId>components-all</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>component-common</artifactId>
+  <dependencies>
 
-    <artifactId>component-common</artifactId>
-    <packaging>jar</packaging>
-    <name>${project.artifactId}:${project.version}</name>
-    <description>${project.artifactId}</description>
-    <url>https://github.com/alibaba/COLA</url>
+    <!-- 工具包 -->
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <description>${project.artifactId}</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>${project.artifactId}:${project.version}</name>
+  <packaging>jar</packaging>
+  <parent>
+    <artifactId>components-all</artifactId>
+    <groupId>com.zjl.component</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
 
 
-    <dependencies>
-
-        <!-- 工具包 -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+  <url>https://github.com/alibaba/COLA</url>
 </project>

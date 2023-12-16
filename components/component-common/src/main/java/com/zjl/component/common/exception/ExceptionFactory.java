@@ -49,7 +49,8 @@ public class ExceptionFactory {
         return new PermissionDeniedException(error);
     }
 
-    public static PermissionDeniedException permissionDeniedException(IError error, Throwable throwable) {
+    public static PermissionDeniedException permissionDeniedException(IError error,
+            Throwable throwable) {
         return new PermissionDeniedException(error, throwable);
     }
 
@@ -75,7 +76,9 @@ public class ExceptionFactory {
     public static ThirdServerException thirdServerException(ErrorInfo errorInfo) {
         return new ThirdServerException(errorInfo);
     }
-    public static ThirdServerException thirdServerException(ErrorInfo errorInfo, Throwable throwable) {
+
+    public static ThirdServerException thirdServerException(ErrorInfo errorInfo,
+            Throwable throwable) {
         return new ThirdServerException(errorInfo, throwable);
     }
 

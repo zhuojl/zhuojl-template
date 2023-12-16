@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 @TableName("customer")
 public class CustomerDO {
+
     private Long id;
     @TableField("customer_id")
     private String customerId;

@@ -1,9 +1,8 @@
 package com.zjl.component.secure.sign;
 
 import com.zjl.component.secure.util.SignatureUtils;
-import lombok.Setter;
-
 import java.util.Objects;
+import lombok.Setter;
 
 @Setter
 public class Md5Signer {

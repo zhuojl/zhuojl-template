@@ -16,11 +16,11 @@ public class MybatisPlusAutoConfiguration {
     }
 
     /**
-     * 在当前项目中使用的版本是3.1.0, 没有自定义id生成器！！因为在各处写死的配置，所以无法动态处理，在
-     * 3.3.0中，提供动态配置，详见官网
-     *
+     * 在当前项目中使用的版本是3.1.0, 没有自定义id生成器！！因为在各处写死的配置，所以无法动态处理，在 3.3.0中，提供动态配置，详见官网
+     * <p>
      * 核心逻辑在于com.baomidou.mybatisplus.core.MybatisConfiguration#MybatisConfiguration()
      * 设置了MybatisXMLLanguageDriver
+     *
      * @return
      */
     @Bean

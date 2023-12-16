@@ -1,23 +1,21 @@
 package com.zjl.component.feign.log;
 
 
+import static feign.Util.UTF_8;
+import static feign.Util.decodeOrDefault;
+import static feign.Util.valuesOrEmpty;
+
 import com.zjl.component.common.CommonConstants;
 import feign.Logger;
 import feign.Request;
 import feign.Response;
 import feign.Util;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import static feign.Util.*;
+import org.slf4j.LoggerFactory;
 
 
 public final class FeignLogger extends Logger {
@@ -63,12 +61,13 @@ public final class FeignLogger extends Logger {
         if (request.requestBody() != null) {
             body = request.requestBody().asString();
         }
-        log.info("{} : {}\n body: {}\n header: {}", configKey, url, body, headers(request.headers()));
+        log.info("{} : {}\n body: {}\n header: {}", configKey, url, body,
+                headers(request.headers()));
     }
 
     @Override
     protected Response logAndRebufferResponse(String configKey, Level logLevel, Response response,
-                                              long elapsedTime) throws IOException {
+            long elapsedTime) throws IOException {
         int status = response.status();
         String url = response.request().url();
 
@@ -81,14 +80,16 @@ public final class FeignLogger extends Logger {
             response = response.toBuilder().body(bodyData).build();
         }
 
-        log.info("{} : Received response code: {} {}ms for {} \nbody: {}", configKey, status, elapsedTime, url, content);
+        log.info("{} : Received response code: {} {}ms for {} \nbody: {}", configKey, status,
+                elapsedTime, url, content);
         return response;
     }
 
     @Override
-    protected IOException logIOException(String configKey, Level logLevel, IOException ioe, long elapsedTime) {
+    protected IOException logIOException(String configKey, Level logLevel, IOException ioe,
+            long elapsedTime) {
         log.info("{} : ERROR {}: {} \n cost time : {} ms",
-            configKey, ioe.getClass().getSimpleName(), ioe.getMessage(), elapsedTime, ioe);
+                configKey, ioe.getClass().getSimpleName(), ioe.getMessage(), elapsedTime, ioe);
 
         return ioe;
     }

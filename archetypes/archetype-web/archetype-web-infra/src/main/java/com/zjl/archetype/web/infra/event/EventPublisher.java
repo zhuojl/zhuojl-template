@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class EventPublisher {
+
     public void publish(Object obj) {
         log.info("sth:{}", obj);
     }

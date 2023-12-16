@@ -3,15 +3,14 @@ package com.zjl.component.web.support.err.handler;
 import com.zjl.component.common.exception.CommonErrorEnum;
 import com.zjl.component.common.model.ErrorInfo;
 import com.zjl.component.common.model.Response;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @RestController
 public class HttpErrorHandler extends BasicErrorController {

@@ -1,114 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.zjl.archetype</groupId>
-        <artifactId>archetype-web</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <artifactId>archetype-web-infra</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>component-feign</artifactId>
+      <groupId>com.zjl.component</groupId>
+      <version>${cola.components.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>component-mybatis-plus</artifactId>
+      <groupId>com.zjl.component</groupId>
+      <version>${cola.components.version}</version>
+    </dependency>
 
-    <artifactId>archetype-web-infra</artifactId>
-    <packaging>jar</packaging>
-    <name>archetype-web-infra</name>
+    <dependency>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <groupId>com.baomidou</groupId>
+    </dependency>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.zjl.component</groupId>
-            <artifactId>component-feign</artifactId>
-            <version>${cola.components.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zjl.component</groupId>
-            <artifactId>component-mybatis-plus</artifactId>
-            <version>${cola.components.version}</version>
-        </dependency>
+    <dependency>
+      <artifactId>mysql-connector-java</artifactId>
+      <groupId>mysql</groupId>
+    </dependency>
 
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>fastjson</artifactId>
+      <groupId>com.alibaba</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-kafka</artifactId>
+      <groupId>org.springframework.kafka</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <groupId>org.springframework.cloud</groupId>
+    </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+    </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>mapstruct</artifactId>
+      <groupId>org.mapstruct</groupId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>spring-kafka-test</artifactId>
+      <groupId>org.springframework.kafka</groupId>
+      <scope>test</scope>
+    </dependency>
 
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-        </dependency>
+    <!-- 单元测试 -->
+    <dependency>
+      <artifactId>h2</artifactId>
+      <groupId>com.h2database</groupId>
 
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- 单元测试 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-
-        <!-- 本地测试方便   <scope>test</scope>-->
-        </dependency>
+      <!-- 本地测试方便   <scope>test</scope>-->
+    </dependency>
 
 
-        <dependency>
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy-sql</artifactId>
-        </dependency>
-        <!-- Optional dependencies for using Spock -->
-        <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>groovy-sql</artifactId>
+      <groupId>org.apache.groovy</groupId>
+    </dependency>
+    <!-- Optional dependencies for using Spock -->
+    <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
+      <artifactId>groovy</artifactId>
+      <groupId>org.apache.groovy</groupId>
+    </dependency>
 
-        <!-- Mandatory dependencies for using Spock -->
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-junit4</artifactId>
-            <scope>test</scope>
-        </dependency>
+    <!-- Mandatory dependencies for using Spock -->
+    <dependency>
+      <artifactId>spock-core</artifactId>
+      <groupId>org.spockframework</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>spock-junit4</artifactId>
+      <groupId>org.spockframework</groupId>
+      <scope>test</scope>
+    </dependency>
 
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-engine</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-commons</artifactId>
-        </dependency>
+    <dependency>
+      <artifactId>junit-platform-engine</artifactId>
+      <groupId>org.junit.platform</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>junit-platform-commons</artifactId>
+      <groupId>org.junit.platform</groupId>
+    </dependency>
 
-        <!-- 单元测试 -->
+    <!-- 单元测试 -->
 
-    </dependencies>
+  </dependencies>
+
+  <modelVersion>4.0.0</modelVersion>
+  <name>archetype-web-infra</name>
+  <packaging>jar</packaging>
+
+  <parent>
+    <artifactId>archetype-web</artifactId>
+    <groupId>com.zjl.archetype</groupId>
+    <relativePath>../pom.xml</relativePath>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
 </project>

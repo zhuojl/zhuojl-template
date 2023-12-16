@@ -1,6 +1,7 @@
 package com.zjl.archetype.web.infra.util
 
 import com.zjl.archetype.web.infra.dao.customer.CustomerDO
+import spock.lang.Specification
 
 /*
  * Copyright 2009 the original author or authors.
@@ -15,8 +16,6 @@ import com.zjl.archetype.web.infra.dao.customer.CustomerDO
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import spock.lang.Specification
 
 class JsonUtilSpec extends Specification {
 

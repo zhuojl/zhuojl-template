@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ThirdServerErrorInfo {
+
     private Integer httpStatus;
     private String simpleMsg;
     private String responseBody;

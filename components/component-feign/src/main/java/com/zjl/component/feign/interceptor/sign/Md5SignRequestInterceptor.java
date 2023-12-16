@@ -6,9 +6,6 @@ import com.zjl.component.secure.sign.Md5Signer;
 import com.zjl.component.secure.sign.RequestSignEntity;
 import feign.Request.HttpMethod;
 import feign.RequestTemplate;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -16,9 +13,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 
 @Slf4j
 public class Md5SignRequestInterceptor implements SignRequestInterceptor {
+
     private static final String DEFAULT_EMPTY_BODY = "Binary data";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private Md5Signer md5Signer = new Md5Signer("test");
@@ -79,7 +79,8 @@ public class Md5SignRequestInterceptor implements SignRequestInterceptor {
                 String value = "";
                 if (idx + 1 < pair.length()) {
                     try {
-                        value = URLDecoder.decode(pair.substring(idx + 1), StandardCharsets.UTF_8.name());
+                        value = URLDecoder.decode(pair.substring(idx + 1),
+                                StandardCharsets.UTF_8.name());
                     } catch (UnsupportedEncodingException e) {
                         throw ExceptionFactory.sysException(CommonErrorEnum.INVALID_PARAMETER);
                     }
@@ -94,7 +95,7 @@ public class Md5SignRequestInterceptor implements SignRequestInterceptor {
         Collection<String> contentTypes = template.request().headers().get("Content-Type");
 
         return Objects.nonNull(contentTypes)
-            && contentTypes.contains(FORM_CONTENT_TYPE) &&
-            HttpMethod.POST.name().equals(template.request().httpMethod().name());
+                && contentTypes.contains(FORM_CONTENT_TYPE) &&
+                HttpMethod.POST.name().equals(template.request().httpMethod().name());
     }
 }

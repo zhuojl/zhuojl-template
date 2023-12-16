@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Query request from Client.
  *
  * @author Frank Zhang 2020.11.13
- *
  */
 public abstract class Query implements Serializable {
 

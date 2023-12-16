@@ -2,11 +2,10 @@ package com.zjl.archetype.web.infra.dao;
 
 import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import com.zjl.archetype.web.infra.dao.customer.CustomerDao;
+import javax.annotation.Resource;
 import org.junit.jupiter.api.Test;
 
-import javax.annotation.Resource;
-
-public class CustomerDaoTest implements MysqlApplicationTest{
+public class CustomerDaoTest implements MysqlApplicationTest {
 
     @Resource
     private CustomerDao customerDao;
@@ -34,9 +33,9 @@ public class CustomerDaoTest implements MysqlApplicationTest{
         CustomerDO customerDO = new CustomerDO();
         customerDO.setCustomerId("xxx");
         customerDO.setMemberId("xxx");
-        customerDO.setGlobalId( "customer.getGd" );
-        customerDO.setRegisteredCapital(2L );
-        customerDO.setCustomerName( "customer()" );
+        customerDO.setGlobalId("customer.getGd");
+        customerDO.setRegisteredCapital(2L);
+        customerDO.setCustomerName("customer()");
 
         customerDao.insert(customerDO);
         CustomerDO customerDO2 = customerDao.getByCustomerId("xxx");

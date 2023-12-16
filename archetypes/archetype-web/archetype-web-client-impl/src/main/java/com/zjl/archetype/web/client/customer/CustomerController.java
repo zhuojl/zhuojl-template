@@ -7,13 +7,12 @@ import com.zjl.archetype.web.biz.customer.service.CustomerBizService;
 import com.zjl.component.common.exception.CommonErrorEnum;
 import com.zjl.component.common.exception.ExceptionFactory;
 import com.zjl.component.common.model.Response;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 // 参数校验
