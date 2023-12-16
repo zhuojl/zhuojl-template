@@ -5,7 +5,7 @@ import com.zjl.archetype.web.biz.customer.validator.CustomerValidator;
 import com.zjl.archetype.web.client.customer.cmd.CustomerAddCmd;
 import com.zjl.archetype.web.client.customer.dto.CustomerDTO;
 import com.zjl.archetype.web.client.customer.qry.CustomerListByNameQry;
-import com.zjl.archetype.web.domain.customer.Customer;
+import com.zjl.archetype.web.domain.customer.dto.Customer;
 import com.zjl.archetype.web.domain.customer.service.CustomerService;
 import com.zjl.archetype.web.infra.exception.BizErrorEnum;
 import com.zjl.component.common.exception.ExceptionFactory;

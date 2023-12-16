@@ -1,6 +1,6 @@
 package com.zjl.archetype.web.domain.customer.mapper;
 
-import com.zjl.archetype.web.domain.customer.Customer;
+import com.zjl.archetype.web.domain.customer.dto.Customer;
 import com.zjl.archetype.web.infra.dao.customer.CustomerDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

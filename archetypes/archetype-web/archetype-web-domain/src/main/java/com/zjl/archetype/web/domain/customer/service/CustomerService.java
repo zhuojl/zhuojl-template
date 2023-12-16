@@ -1,6 +1,6 @@
 package com.zjl.archetype.web.domain.customer.service;
 
-import com.zjl.archetype.web.domain.customer.Customer;
+import com.zjl.archetype.web.domain.customer.dto.Customer;
 
 public interface CustomerService {
 

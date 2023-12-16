@@ -3,7 +3,7 @@ package com.zjl.archetype.web.biz.customer
 import com.zjl.archetype.web.biz.customer.service.CustomerBizServiceImpl
 import com.zjl.archetype.web.client.customer.cmd.CustomerAddCmd
 import com.zjl.archetype.web.client.customer.dto.CustomerDTO
-import com.zjl.archetype.web.domain.customer.Customer
+import com.zjl.archetype.web.domain.customer.dto.Customer
 import com.zjl.archetype.web.domain.customer.service.CustomerService
 import com.zjl.archetype.web.infra.exception.BizErrorEnum
 import com.zjl.component.common.exception.BadRequestException

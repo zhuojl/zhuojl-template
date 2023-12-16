@@ -1,11 +1,9 @@
 package com.zjl.archetype.web.domain.customer.service
 
-import com.zjl.archetype.web.domain.customer.Customer
+import com.zjl.archetype.web.domain.customer.dto.Customer
 import com.zjl.archetype.web.infra.dao.customer.CustomerDO
 import com.zjl.archetype.web.infra.dao.customer.CustomerDao
 import com.zjl.archetype.web.infra.event.EventPublisher
-import com.zjl.archetype.web.infra.util.JsonUtil
-import org.junit.jupiter.api.Test
 import spock.lang.Specification
 
 class CustomerServiceSpec extends Specification {
