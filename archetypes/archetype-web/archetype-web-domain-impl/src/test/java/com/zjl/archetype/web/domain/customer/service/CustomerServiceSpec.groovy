@@ -13,9 +13,9 @@ class CustomerServiceSpec extends Specification {
     def customerService = new CustomerServiceImpl(customerDao: customerDao, eventPublisher: eventPublisher)
 
 
-    def testGetByById()  {
+    def testGetByById() {
         given:
-        def customerDO = new CustomerDO(customerId:  "customerId", customerName: "customerName");
+        def customerDO = new CustomerDO(customerId: "customerId", customerName: "customerName");
         and:
         customerDao.getByCustomerId(_) >> customerDO;
 
@@ -28,7 +28,7 @@ class CustomerServiceSpec extends Specification {
 
     def testAddCustomer() {
         given:
-        def customer = new Customer(customerId:  "customerId", customerName: "customerName");
+        def customer = new Customer(customerId: "customerId", customerName: "customerName");
         and:
         customerDao.insert(_) >> 1;
 

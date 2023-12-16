@@ -1,5 +1,6 @@
 package com.zjl.archetype.web.domain.customer.dto;
 
+import com.zjl.archetype.web.constants.customer.CustomerType;
 import lombok.Data;
 
 //Domain Entity can choose to extend the domain model which is used for DTO
@@ -12,5 +13,7 @@ public class Customer {
     private String memberId;
     private String globalId;
     private long registeredCapital;
+
+    private CustomerType customerType;
 
 }

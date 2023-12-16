@@ -7,12 +7,14 @@
     <dependency>
       <artifactId>component-feign</artifactId>
       <groupId>com.zjl.component</groupId>
-      <version>${cola.components.version}</version>
     </dependency>
     <dependency>
       <artifactId>component-mybatis-plus</artifactId>
       <groupId>com.zjl.component</groupId>
-      <version>${cola.components.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>archetype-web-constants</artifactId>
+      <groupId>com.zjl.archetype</groupId>
     </dependency>
 
     <dependency>

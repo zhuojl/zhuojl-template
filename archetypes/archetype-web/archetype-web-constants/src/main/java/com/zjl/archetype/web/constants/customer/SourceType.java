@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.domain.customer;
+package com.zjl.archetype.web.constants.customer;
 
 /**
  * SourceType

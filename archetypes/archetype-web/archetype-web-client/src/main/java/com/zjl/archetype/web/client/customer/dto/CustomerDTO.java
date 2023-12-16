@@ -1,5 +1,6 @@
 package com.zjl.archetype.web.client.customer.dto;
 
+import com.zjl.archetype.web.constants.customer.CustomerType;
 import lombok.Data;
 
 @Data
@@ -11,4 +12,5 @@ public class CustomerDTO {
     private String memberId;
     private String globalId;
     private long registeredCapital;
+    private CustomerType customerType;
 }

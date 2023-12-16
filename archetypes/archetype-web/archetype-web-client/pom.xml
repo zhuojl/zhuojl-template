@@ -8,13 +8,19 @@
       <artifactId>component-web-base</artifactId>
       <groupId>com.zjl.component</groupId>
     </dependency>
+
+    <dependency>
+      <artifactId>archetype-web-constants</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
+
     <dependency>
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>
     <dependency>
-      <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
     </dependency>
   </dependencies>
 

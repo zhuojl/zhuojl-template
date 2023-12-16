@@ -157,7 +157,11 @@
         <groupId>com.zjl.archetype</groupId>
         <version>${project.version}</version>
       </dependency>
-
+      <dependency>
+        <artifactId>archetype-web-constants</artifactId>
+        <groupId>com.zjl.archetype</groupId>
+        <version>${project.version}</version>
+      </dependency>
 
       <!--COLA components-->
       <dependency>
@@ -172,6 +176,17 @@
       </dependency>
       <dependency>
         <artifactId>component-web-starter</artifactId>
+        <groupId>com.zjl.component</groupId>
+        <version>${cola.components.version}</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>component-feign</artifactId>
+        <groupId>com.zjl.component</groupId>
+        <version>${cola.components.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>component-mybatis-plus</artifactId>
         <groupId>com.zjl.component</groupId>
         <version>${cola.components.version}</version>
       </dependency>
@@ -327,6 +342,7 @@
     <module>archetype-web-domain</module>
     <module>archetype-web-domain-impl</module>
     <module>archetype-web-infra</module>
+    <module>archetype-web-constants</module>
   </modules>
 
   <name>archetype-web</name>

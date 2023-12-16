@@ -2,6 +2,7 @@ package com.zjl.archetype.web.infra.dao.customer;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.zjl.archetype.web.constants.customer.CustomerType;
 import lombok.Data;
 
 @Data
@@ -19,4 +20,7 @@ public class CustomerDO {
     private String globalId;
     @TableField("registered_capital")
     private long registeredCapital;
+
+    @TableField("customer_type")
+    private CustomerType customerType;
 }

@@ -2,10 +2,11 @@ create table customer
 (
     id                 bigint auto_increment,
     customer_id        varchar(50),
-    customer_name      varchar(50),
     member_id          varchar(50),
     global_id          varchar(50),
+    customer_name      varchar(50),
     registered_capital bigint,
+    customer_type      varchar(20),
     PRIMARY KEY (id)
 );
 

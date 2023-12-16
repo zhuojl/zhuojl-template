@@ -27,6 +27,10 @@
       <artifactId>component-common</artifactId>
       <groupId>com.zjl.component</groupId>
     </dependency>
+    <dependency>
+      <artifactId>archetype-web-constants</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
     <!-- COLA components end -->
 
   </dependencies>
