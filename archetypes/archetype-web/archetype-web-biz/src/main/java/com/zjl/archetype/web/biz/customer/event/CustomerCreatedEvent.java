@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.biz.customer.dto.event;
+package com.zjl.archetype.web.biz.customer.event;
 
 /**
  * CustomerCreatedEvent

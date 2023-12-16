@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.biz.customer.dto.data;
+package com.zjl.archetype.web.client.customer.dto;
 
 import lombok.Data;
 

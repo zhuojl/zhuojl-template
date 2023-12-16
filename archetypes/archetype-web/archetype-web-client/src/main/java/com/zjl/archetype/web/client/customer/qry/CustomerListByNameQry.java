@@ -1,4 +1,4 @@
-package com.zjl.archetype.web.biz.customer.dto;
+package com.zjl.archetype.web.client.customer.qry;
 
 import com.zjl.component.common.model.Query;
 import javax.validation.constraints.NotBlank;

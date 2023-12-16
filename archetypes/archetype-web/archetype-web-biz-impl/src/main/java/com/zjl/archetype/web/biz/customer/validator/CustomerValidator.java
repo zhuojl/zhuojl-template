@@ -1,6 +1,6 @@
 package com.zjl.archetype.web.biz.customer.validator;
 
-import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
+import com.zjl.archetype.web.client.customer.dto.CustomerDTO;
 import java.util.Objects;
 
 public class CustomerValidator {

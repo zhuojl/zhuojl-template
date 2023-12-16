@@ -1,6 +1,6 @@
-package com.zjl.archetype.web.biz.customer.dto;
+package com.zjl.archetype.web.client.customer.cmd;
 
-import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
+import com.zjl.archetype.web.client.customer.dto.CustomerDTO;
 import com.zjl.component.common.model.Command;
 import javax.validation.constraints.NotNull;
 import lombok.Data;

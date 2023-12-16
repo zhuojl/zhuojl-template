@@ -27,6 +27,11 @@
       <groupId>com.zjl.archetype</groupId>
     </dependency>
     <dependency>
+      <artifactId>archetype-web-biz</artifactId>
+      <groupId>com.zjl.archetype</groupId>
+    </dependency>
+
+    <dependency>
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>

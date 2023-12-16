@@ -1,8 +1,8 @@
 package com.zjl.archetype.web.biz.customer;
 
-import com.zjl.archetype.web.biz.customer.dto.CustomerAddCmd;
-import com.zjl.archetype.web.biz.customer.dto.data.CustomerDTO;
 import com.zjl.archetype.web.biz.customer.service.CustomerBizServiceImpl;
+import com.zjl.archetype.web.client.customer.cmd.CustomerAddCmd;
+import com.zjl.archetype.web.client.customer.dto.CustomerDTO;
 import com.zjl.archetype.web.domain.customer.service.CustomerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
