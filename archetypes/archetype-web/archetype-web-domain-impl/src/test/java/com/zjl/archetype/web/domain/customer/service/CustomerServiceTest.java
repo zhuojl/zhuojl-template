@@ -30,17 +30,17 @@ public class CustomerServiceTest {
     public void testGetByById() throws IOException {
         CustomerDO customerDO = JsonUtil.parseJsonFromClassPathFile("test/domain/customer/CustomerDO.json", CustomerDO.class);
         Mockito.when(customerDao.getByCustomerId("test")).thenReturn(customerDO);
-        Customer customer = customerService.getByById("test");
+        Customer customer = customerService.getByCustomerId("test");
         Assert.assertNotNull(customer);
         Assert.assertEquals(customerDO.getCustomerId(), customer.getCustomerId());
 
-        Customer customer2 = customerService.getByById("test1");
+        Customer customer2 = customerService.getByCustomerId("test1");
         Assert.assertNull(customer2);
     }
 
     @Test
     public void testAddCustomer() {
         Customer customer = new Customer();
-        String customerId = customerService.addCustomer(customer);
+        Long id = customerService.addCustomer(customer);
     }
 }

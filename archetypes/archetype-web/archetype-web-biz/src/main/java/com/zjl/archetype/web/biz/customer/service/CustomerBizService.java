@@ -9,7 +9,7 @@ import com.zjl.component.common.model.Response;
 
 public interface CustomerBizService {
 
-    Response<String> addCustomer(CustomerAddCmd customerAddCmd);
+    Response<Long> addCustomer(CustomerAddCmd customerAddCmd);
 
     Response<List<CustomerDTO>> listByName(CustomerListByNameQry customerListByNameQry);
 

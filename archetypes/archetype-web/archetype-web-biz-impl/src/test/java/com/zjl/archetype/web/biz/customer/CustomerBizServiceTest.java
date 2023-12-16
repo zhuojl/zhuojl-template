@@ -26,7 +26,7 @@ public class CustomerBizServiceTest {
         customerDTO.setCustomerId("DEFAULT_USER_ID");
         customerDTO.setCustomerName("DEFAULT_USER_NAME");
         customerDTO.setCustomerType("");
-        customerAddCmd.setCustomerDTO(customerDTO);
+        customerAddCmd.setCustomer(customerDTO);
         customerBizService.addCustomer(customerAddCmd);
     }
 }

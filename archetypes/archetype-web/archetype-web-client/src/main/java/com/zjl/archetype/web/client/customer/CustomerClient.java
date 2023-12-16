@@ -15,7 +15,7 @@ import javax.validation.Valid;
 public interface CustomerClient {
 
     @PostMapping(value = "/customer")
-    Response<String> addCustomer(@Valid @RequestBody CustomerAddCmd customerAddCmd);
+    Response<Long> addCustomer(@Valid @RequestBody CustomerAddCmd customerAddCmd);
 
     @GetMapping(value = "/customer")
     Response<List<CustomerDTO>> listByName(@Valid CustomerListByNameQry customerListByNameQry);

@@ -34,7 +34,7 @@ public class CustomerController implements CustomerClient {
         //return "Hello, welcome to COLA world!";
     }
 
-    public Response<String> addCustomer(CustomerAddCmd customerAddCmd) {
+    public Response<Long> addCustomer(CustomerAddCmd customerAddCmd) {
         return customerBizService.addCustomer(customerAddCmd);
     }
 

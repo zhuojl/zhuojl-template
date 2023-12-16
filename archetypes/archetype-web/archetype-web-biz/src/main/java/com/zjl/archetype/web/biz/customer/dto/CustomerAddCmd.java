@@ -9,6 +9,6 @@ import lombok.Data;
 public class CustomerAddCmd {
 
     @NotNull
-    private CustomerDTO customerDTO;
+    private CustomerDTO customer;
 
 }

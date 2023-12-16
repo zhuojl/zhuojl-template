@@ -3,9 +3,10 @@ package com.zjl.archetype.web.domain.customer.service;
 import com.zjl.archetype.web.domain.customer.Customer;
 
 public interface CustomerService {
-    Customer getByById(String customerId);
+    Customer getByCustomerId(String customerId);
+    Customer getById(Long id);
 
     Customer getByCompanyName(String customerName);
 
-    String addCustomer(Customer customer);
+    Long addCustomer(Customer customer);
 }

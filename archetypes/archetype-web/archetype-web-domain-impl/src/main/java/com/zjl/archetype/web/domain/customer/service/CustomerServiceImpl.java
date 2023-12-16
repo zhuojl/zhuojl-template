@@ -16,27 +16,33 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private EventPublisher eventPublisher;
 
-    public Customer getByById(String customerId) {
+    public Customer getByCustomerId(String customerId) {
         CustomerDO customerDO = customerDao.getByCustomerId(customerId);
+        //Convert to Customer
+        return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
+    }
+
+    public Customer getById(Long id) {
+        CustomerDO customerDO = customerDao.selectById(id);
         //Convert to Customer
         return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
     }
 
     @Override
     public Customer getByCompanyName(String customerName) {
-        CustomerDO customerDO = customerDao.getByCustomerId(customerName);
+        CustomerDO customerDO = customerDao.getByCompanyName(customerName);
         return CustomerMapper.INSTANCE.fromCustomerDO(customerDO);
     }
 
     @Override
     @Transactional
-    public String addCustomer(Customer customer) {
-        CustomerDO customerDO = new CustomerDO();
+    public Long addCustomer(Customer customer) {
+        CustomerDO customerDO = CustomerMapper.INSTANCE.toCustomerDO(customer);
         // convert customer 2 CustomerDO
         customerDao.insert(customerDO);
         // event publish 领域逻辑时间在领域层发送
         eventPublisher.publish(new Object());
 
-        return customerDO.getCustomerId();
+        return customerDO.getId();
     }
 }
